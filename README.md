@@ -1,4 +1,6 @@
 I've put together this list of basic CSS classes and ids for gethomepage. This list should help you target specific elements for custom styling and get started on your custom.css for [gethomepage](https://gethomepage.dev/).
+
+![Foxes-Dashboard-10-17-2024_06_02_PM](https://github.com/user-attachments/assets/b4d852c8-4feb-4d8f-bd2b-cae4b3a8b4e6)
  
 ### This includes sections for:
 1. [Background](#Background)
