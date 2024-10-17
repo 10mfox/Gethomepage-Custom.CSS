@@ -1,4 +1,4 @@
-```/* Background */
+/* Background */
 #page_container {
   content: "";
   position: fixed;
@@ -217,4 +217,3 @@
   white-space: nowrap;
   transition: all 0.3s ease;
 }
-```
