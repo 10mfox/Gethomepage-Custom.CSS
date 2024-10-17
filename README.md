@@ -1,4 +1,4 @@
-I've put together this list of basic CSS classes and ids for gethomepage. This list should help you target specific elements for custom styling.
+I've put together this list of basic CSS classes and ids for gethomepage. This list should help you target specific elements for custom styling and get started on your custom.css for [gethomepage](https://gethomepage.dev/).
  
 ### This includes sections for:
 1. [Background](#Background)
