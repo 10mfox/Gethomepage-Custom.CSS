@@ -7,6 +7,7 @@ I've put together this list of basic CSS classes and ids for gethomepage. This l
 4. [Services](#Services)
 5. [Bookmarks](#Bookmarks)
 6. [Example Custom.CSS](#Example)
+7. [My Custom.CSS](https://github.com/10mfox/Gethomepage-Custom.CSS/blob/main/current%20custom.css)
 
 It also includes a brief example of how to use these classes and IDs in a custom CSS file at the bottom.
  
