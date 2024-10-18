@@ -1,10 +1,36 @@
+/* First, define the font using @font-face */
+@font-face {
+  font-family: 'zelda';
+  src: url('/fonts/Triforce.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Define the vars you need */
+:root {
+  --my-backdrop-filter: blur(8px);
+  --my-border-color: #395521;
+  --my-focus-border-color: #538845;
+}
+
+/* Font Styles */
+* {
+  font-family: "zelda" !important;
+  color: #C5C400 !important;
+  font-weight: normal !important;
+}
+
 /* Background */
 #page_container {
   content: "";
   position: fixed;
-  background: url('/images/fox-demon.jpg') no-repeat center center fixed;  
+  background: url('/images/zelda.jpg') no-repeat center center fixed;  
   background-size: cover;
 }
+
+
+
+
 
 /* Bookmark Layout */
 @media(min-width: 500px) {
@@ -27,42 +53,69 @@
     }
 }
 
-/* Border Styles */
+/* Service Widgets Border Styles */
 #information-widgets,
 #layout-groups,
-.service-card,
-#Home-tab,
-#Links-tab,
-#Docker-tab {
+.service-card {
   border-width: 5px;
   border-radius: .375rem;
-  border-color: #A54702;
-  backdrop-filter: blur(64px);
+  border-color: var(--my-border-color);
+  backdrop-filter: var(--my-backdrop-filter);
   padding: 1px;
-  margin: 1px;
+  margin: 0px;
   border-spacing: 0;
 }
 
-/* Font Styles */
-.service-card,
-.bookmark,
-.widget-container,
-.information-widget-resource,
-.service-group-name,
-.service-name,
-#bookmarks,
-#Home-tab,
-#Links-tab,
-#Docker-tab {
-  font-family: "Comic Sans MS", "Comic Sans" !important;
-  font-weight: 800;
-  content-visibility: auto;
-  contain-intrinsic-size: 1px 5000px;
+/* All Tab Styles */
+#myTab {
+  font: 16px/2 'Manrope', sans-serif;
+  padding: 5px;
+  background: none;
+  backdrop-filter: none;
+  display: flex;
+  justify-content: flex-start;
+  gap: 40px;
 }
+
+/* Tab Border Styles */
+#Links-tab,
+#Servarr-tab,
+#Docker-tab,
+#Stats-tab {
+  border-width: 5px;
+  border-radius: .375rem;
+  border-color: var(--my-border-color);
+  backdrop-filter: var(--my-backdrop-filter);
+  padding: 1px;
+  margin: -8px;
+  border-spacing: 0;
+}
+
+/* Tab:focus Styles */
+#Links-tab:focus,
+#Servarr-tab:focus,
+#Docker-tab:focus,
+#Stats-tab:focus {
+  border-color: var(--my-focus-border-color);
+  padding: 5px 15px;
+  margin: -8;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  backdrop-filter: var(--my-backdrop-filter);
+  white-space: nowrap;
+  transition: all 0.3s ease;
+}
+
+
 
 /* Layout and Spacing */
 .information-widget-resource {
-  gap: 60px;
+  margin-left: 42px;
+  margin-right: 42px;
+  gap: 20px;
 }
 
 #information-widgets,
@@ -92,15 +145,42 @@
     margin: 8px 0;
   }
 
+  .information-widget-resource {
+    margin-left: 20px !important;
+    margin-right: 20px !important;
+  }
+
+  /* Bookmark Layout */
+  @media(min-width: 500px) {
+      .bookmark-list.flex.flex-col {
+          display: grid !important;
+          grid-template-columns: repeat(2, 1fr) !important;
+          gap: 0rem;
+      }
+      
+      .bookmark-list.flex.flex-col .service {
+          grid-column: span 2;
+      }
+      
+      .bookmark-list.flex.flex-col .service > .mb-2 {
+          margin-bottom: 0 !important;
+      }
+      
+      .bookmark-list.flex.flex-col #home-away.bookmark-list {
+          grid-column: span 1;
+      }
+  }
+
   #myTab {
     flex-wrap: wrap;
     justify-content: center;
     gap: 10px;
   }
 
-  #Home-tab,
   #Links-tab,
-  #Docker-tab {
+  #Servarr-tab,
+  #Docker-tab,
+  #Stats-tab {
     border-width: 3px;
     padding: 10px;
     margin: 0;
@@ -115,6 +195,10 @@
     font-size: 13px;
   }
 
+  #widgets-wrap {
+    column-gap: 0rem
+  }
+
   #myTab {
     flex-wrap: nowrap;
     overflow-x: auto;
@@ -123,9 +207,10 @@
     gap: 5px;
   }
 
-  #Home-tab,
   #Links-tab,
-  #Docker-tab {
+  #Servarr-tab,
+  #Docker-tab,
+  #Stats-tab {
     flex: 0 0 auto;
     width: auto;
     white-space: nowrap;
@@ -147,14 +232,46 @@
     margin: 5px 0;
   }
 
-  #Home-tab,
+  #widgets-wrap {
+    column-gap: 0rem
+  }
+
+  .information-widget-resource {
+    margin-left: 20px !important;
+    margin-right: 20px !important;
+  }
+
   #Links-tab,
-  #Docker-tab {
+  #Servarr-tab,
+  #Docker-tab,
+  #Stats-tab {
     border-width: 2px;
     padding: 8px;
     min-height: 36px;
     width: 100%;
   }
+  
+  /* Bookmark Layout */
+  @media(min-width: 500px) {
+      .bookmark-list.flex.flex-col {
+          display: grid !important;
+          grid-template-columns: repeat(2, 1fr) !important;
+          gap: 2rem;
+      }
+      
+      .bookmark-list.flex.flex-col .service {
+          grid-column: span 2;
+      }
+      
+      .bookmark-list.flex.flex-col .service > .mb-2 {
+          margin-bottom: 0 !important;
+      }
+      
+      .bookmark-list.flex.flex-col #home-away.bookmark-list {
+          grid-column: span 1;
+      }
+  }
+  
 }
 
 /* Recently Added Section */
@@ -174,7 +291,6 @@
 }
 
 #list > div > div.relative.flex.flex-row.w-full.service-container > div > div > div.flex.flex-row.text-right > div {
-  color: white;
   font-weight: 300;
   content-visibility: auto;
   contain-intrinsic-size: 1px 5000px;
@@ -189,31 +305,4 @@
   width: 100%;
   height: 100%;
   z-index: -1;
-}
-
-/* Tab Styles */
-#myTab {
-  font: 16px/2 'Manrope', sans-serif;
-  padding: 5px;
-  background: none;
-  backdrop-filter: none;
-  display: flex;
-  justify-content: flex-start;
-  gap: 40px;
-}
-
-#Home-tab:focus,
-#Links-tab:focus,
-#Docker-tab:focus {
-  border-color: #f56905;
-  padding: 5px 15px;
-  margin: 0;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 40px;
-  backdrop-filter: brightness(30%) blur(15px) saturate(75%);
-  white-space: nowrap;
-  transition: all 0.3s ease;
 }
