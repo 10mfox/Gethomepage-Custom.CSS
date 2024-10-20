@@ -7,7 +7,7 @@ I've put together this list of basic CSS classes and ids for gethomepage. This l
 4. [Tabs](#Tabs)
 5. [Services](#Services)
 6. [Bookmarks](#Bookmarks)
-7. [Variables](#Vars)
+7. [Custom Variables](#Vars)
 8. [My Custom.CSS](https://github.com/10mfox/Gethomepage-Custom.CSS/blob/main/current%20custom.css)
 9. Contributions can be added [here](https://github.com/10mfox/gethomepage-Custom.CSS/discussions/categories/contributions) the more the better
 
