@@ -33,6 +33,6 @@ It also includes a brief example of how to use these classes and IDs in a custom
 
 To apply custom styles, you can create a `custom.css` file in your Gethomepage configuration directory and reference these classes and IDs above.
  
-## Credits to:
+## Contributors:
     🔥 Olaf 🔥  
     LionCityGaming
