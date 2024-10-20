@@ -7,8 +7,9 @@ I've put together this list of basic CSS classes and ids for gethomepage. This l
 4. [Tabs](#Tabs)
 5. [Services](#Services)
 6. [Bookmarks](#Bookmarks)
-7. [My Custom.CSS](https://github.com/10mfox/Gethomepage-Custom.CSS/blob/main/current%20custom.css)
-8. Contributions can be added [here](https://github.com/10mfox/gethomepage-Custom.CSS/discussions/categories/contributions) the more the better
+7. [Variables](#Vars)
+8. [My Custom.CSS](https://github.com/10mfox/Gethomepage-Custom.CSS/blob/main/current%20custom.css)
+9. Contributions can be added [here](https://github.com/10mfox/gethomepage-Custom.CSS/discussions/categories/contributions) the more the better
 
 It also includes a brief example of how to use these classes and IDs in a custom CSS file at the bottom.
  
@@ -37,6 +38,9 @@ It also includes a brief example of how to use these classes and IDs in a custom
 - `.bookmark-group`: For border around all bookmarks/titles individually
 - `#bookmarks`: For border around all bookmarks
 - `.bookmark-icon`: this is for all bookmark icon backgrounds
+
+## Vars
+- `:root`: you can set custom vars if you want to change multiple things at once like this ```--my-backdrop-filter: blur(8px)``` then you reference it like this ```backdrop-filter: var(--my-backdrop-filter);```
 
 To apply custom styles, you can create a `custom.css` file in your Gethomepage configuration directory and reference these classes and IDs above.
  
