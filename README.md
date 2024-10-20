@@ -2,17 +2,21 @@ I've put together this list of basic CSS classes and ids for gethomepage. This l
  
 ### This includes sections for:
 1. [Background](#Background)
-2. [System Info Widgets](#System-Info-Widgets)
-3. [Tabs](#Tabs)
-4. [Services](#Services)
-5. [Bookmarks](#Bookmarks)
-6. [My Custom.CSS](https://github.com/10mfox/Gethomepage-Custom.CSS/blob/main/current%20custom.css)
-7. Contributions can be added [here](https://github.com/10mfox/gethomepage-Custom.CSS/discussions/categories/contributions) the more the better
+2. [Font](#Font)
+3. [System Info Widgets](#System-Info-Widgets)
+4. [Tabs](#Tabs)
+5. [Services](#Services)
+6. [Bookmarks](#Bookmarks)
+7. [My Custom.CSS](https://github.com/10mfox/Gethomepage-Custom.CSS/blob/main/current%20custom.css)
+8. Contributions can be added [here](https://github.com/10mfox/gethomepage-Custom.CSS/discussions/categories/contributions) the more the better
 
 It also includes a brief example of how to use these classes and IDs in a custom CSS file at the bottom.
  
 ## Background
 - `#page_containerr`: for the background of entire homepage
+
+## Font
+- `*`: This will set font and font color for all of homepage
  
 ## System Info Widgets
 - `#information-widgets`: top widgets/stats
