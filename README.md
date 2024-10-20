@@ -7,6 +7,7 @@ I've put together this list of basic CSS classes and ids for gethomepage. This l
 4. [Services](#Services)
 5. [Bookmarks](#Bookmarks)
 6. [My Custom.CSS](https://github.com/10mfox/Gethomepage-Custom.CSS/blob/main/current%20custom.css)
+7. Contributions can be added [here](https://github.com/10mfox/gethomepage-Custom.CSS/discussions/categories/contributions) the more the better
 
 It also includes a brief example of how to use these classes and IDs in a custom CSS file at the bottom.
  
@@ -32,6 +33,6 @@ It also includes a brief example of how to use these classes and IDs in a custom
 
 To apply custom styles, you can create a `custom.css` file in your Gethomepage configuration directory and reference these classes and IDs above.
  
-Credits to:
+## Credits to:
     🔥 Olaf 🔥  
     LionCityGaming
