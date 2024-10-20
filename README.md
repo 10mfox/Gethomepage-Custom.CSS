@@ -24,7 +24,7 @@ It also includes a brief example of how to use these classes and IDs in a custom
  
 ## Tabs
 - `#myTab`: For border around entire tab bar
-- `#Home-tab, #Docker-tab`: For individual tabs borders/font (be sure to change “Home” and “Docker” to the name of your tabs add any more you have)
+- `button[id$='-tab']`: For individual tabs borders/font (be sure to change “Home” and “Docker” to the name of your tabs add any more you have)
 
 ## Services
 - `.service-group-name`: Service Group Title
