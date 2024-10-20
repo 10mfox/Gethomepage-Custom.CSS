@@ -25,11 +25,14 @@ It also includes a brief example of how to use these classes and IDs in a custom
 - `.service-group-name`: Service Group Title
 - `.service-card`: For border around all services individually
 - `#layout-groups`: For border around all services
+- `.service-icon`: this is for all service icon backgrounds
+
  
 ## Bookmarks
 - `.bookmark`: For border around all bookmarks (Not Titles) individually
 - `.bookmark-group`: For border around all bookmarks/titles individually
 - `#bookmarks`: For border around all bookmarks
+- `.bookmark-icon`: this is for all bookmark icon backgrounds
 
 To apply custom styles, you can create a `custom.css` file in your Gethomepage configuration directory and reference these classes and IDs above.
  
