@@ -171,6 +171,7 @@ Here's a brief example of how to use these classes and IDs in a custom CSS file:
 - [Official Gethomepage Documentation](https://gethomepage.dev/)
 - [CSS Tricks](https://css-tricks.com/)
 - [MDN Web Docs: CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
+- [TailwindCSS](https://tailwindcss.com/)
 
 ## Contributors:
 - 🔥 Olaf 🔥
