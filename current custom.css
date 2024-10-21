@@ -1,3 +1,14 @@
+/* Define the vars you need */
+:root {
+  --my-backdrop-filter: blur(8px);
+  
+  --my-border-color: #1B5E20;
+  --my-focus-border-color: #4169E1;
+  --my-hover-border-color: #4169E1; 
+  
+  --my-font: "zelda";
+}
+
 /* First, define the font using @font-face */
 @font-face {
   font-family: 'zelda';
@@ -6,19 +17,26 @@
   font-style: normal;
 }
 
-/* Define the vars you need */
-:root {
-  --my-backdrop-filter: blur(8px);
-  --my-border-color: #395521;
-  --my-focus-border-color: #538845;
+/* Font Styles */
+* {
+  font-family: var(--my-font) !important;
+  color: #FFD700 !important;
+  font-weight: normal !important;
 }
 
 /* Font Styles */
-* {
-  font-family: "zelda" !important;
-  color: #C5C400 !important;
+*:hover {
+  font-family: var(--my-font) !important;
+  color: #DC143C !important;
   font-weight: normal !important;
 }
+
+.bookmark-icon,
+.service-icon {
+    background-color: rgb(0 0 0) !important;
+}
+
+
 
 /* Background */
 #page_container {
@@ -27,10 +45,6 @@
   background: url('/images/zelda.jpg') no-repeat center center fixed;  
   background-size: cover;
 }
-
-
-
-
 
 /* Bookmark Layout */
 @media(min-width: 500px) {
@@ -66,6 +80,8 @@
   border-spacing: 0;
 }
 
+
+
 /* All Tab Styles */
 #myTab {
   font: 16px/2 'Manrope', sans-serif;
@@ -78,10 +94,7 @@
 }
 
 /* Tab Border Styles */
-#Links-tab,
-#Servarr-tab,
-#Docker-tab,
-#Stats-tab {
+button[id$='-tab'] {
   border-width: 5px;
   border-radius: .375rem;
   border-color: var(--my-border-color);
@@ -92,10 +105,7 @@
 }
 
 /* Tab:focus Styles */
-#Links-tab:focus,
-#Servarr-tab:focus,
-#Docker-tab:focus,
-#Stats-tab:focus {
+button[id$='-tab']:focus {
   border-color: var(--my-focus-border-color);
   padding: 5px 15px;
   margin: -8;
@@ -109,7 +119,16 @@
   transition: all 0.3s ease;
 }
 
-
+/* Service Card Styles */
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
 
 /* Layout and Spacing */
 .information-widget-resource {
@@ -278,31 +297,62 @@
 #list > div > div.relative.flex.flex-row.w-full.service-container > div > div {
   display: block;
   text-align: right;
+  
 }
 
 #list > div > div.relative.flex.flex-row.w-full.service-container > div > div > div.flex.flex-row.text-right > div:nth-child(1) {
   text-align: left;
   margin-left: .5rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 #list > div > div.relative.flex.flex-row.w-full.service-container > div > div > div.flex.flex-row.text-right > div:nth-child(2) {
   text-align: right;
   margin-left: auto;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-#list > div > div.relative.flex.flex-row.w-full.service-container > div > div > div.flex.flex-row.text-right > div {
-  font-weight: 300;
-  content-visibility: auto;
-  contain-intrinsic-size: 1px 5000px;
-}
-
-/* Service Card Styles */
-.service-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
+/* Recently Added */
+#list>div>div.relative.flex.flex-row.w-full.service-container {
+    &>div>div {
+        display: block;
+        text-align: right;
+    
+        &>div.flex.flex-row.text-right {
+    
+            &>div:nth-child(1) {
+                text-align: left;
+                margin-left: .5rem;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+    
+            &>div:nth-child(2) {
+                text-align: right;
+                margin-left: auto;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+        }
+        &>div.flex.flex-row.text-right:hover {
+    
+            &>div:nth-child(1) {
+                text-align: left;
+                margin-left: .5rem;
+                white-space: wrap !important;
+            }
+    
+            &>div:nth-child(2) {
+                text-align: right;
+                margin-left: auto;
+                white-space: wrap !important;
+            }
+        }		
+    }
 }
