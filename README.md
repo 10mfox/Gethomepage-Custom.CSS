@@ -11,7 +11,7 @@ I've put together this comprehensive list of CSS classes, IDs, and resources for
 6. [Bookmarks](#bookmarks)
 7. [Custom Variables](#custom-variables)
 8. [Mobile-Specific Styling](#mobile-specific-styling)
-9. [Dark & Light Mode Customization](#Dark-&-Light-Mode-Customization)
+9. [Dark & Light Mode Customization](#dark-&-light-mode)
 10. [Advanced CSS Techniques](#advanced-css-techniques)
 11. [Troubleshooting](#troubleshooting)
 12. [Best Practices](#best-practices)
@@ -80,7 +80,7 @@ Use media queries to apply styles specifically for mobile devices:
 }
 ```
 
-## Dark & Light Mode Customization
+## Dark & Light Mode
 Gethomepage supports both dark and light modes. You can target these modes using the following classes:
 
 ```css
