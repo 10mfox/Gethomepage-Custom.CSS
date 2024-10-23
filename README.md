@@ -35,7 +35,8 @@ I've put together this comprehensive list of CSS classes, IDs, and resources for
 
 ## Tabs
 - `#myTab`: For border around entire tab bar
-- `button[id$='-tab']`: For individual tab borders/font
+- `button[id$='-tab']`: For all individual tab borders/font
+- `#name-tab`: For individual tab borders/font (replace `name` with your tab name)
 
 ## Services
 - `.service-group-name`: Service Group Title
