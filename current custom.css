@@ -4,8 +4,9 @@
   
   --my-border-color: #1B5E20;
   --my-focus-border-color: #4169E1;
-  --my-hover-border-color: #4169E1; 
-  
+  --my-hover-border-color: #DC143C !important; 
+  --my-border-width: 5px !important;
+  --my-border-radius: .375rem;
   --my-font: "zelda";
 }
 
@@ -31,13 +32,6 @@
   font-weight: normal !important;
 }
 
-.bookmark-icon,
-.service-icon {
-    background-color: rgb(0 0 0) !important;
-}
-
-
-
 /* Background */
 #page_container {
   content: "";
@@ -46,45 +40,92 @@
   background-size: cover;
 }
 
-/* Bookmark Layout */
-@media(min-width: 500px) {
-    .bookmark-list.flex.flex-col {
-        display: grid !important;
-        grid-template-columns: repeat(4, 10fr);
-        gap: 0.5rem;
-    }
-    
-    .bookmark-list.flex.flex-col .service {
-        grid-column: span 2;
-    }
-    
-    .bookmark-list.flex.flex-col .service > .mb-2 {
-        margin-bottom: 0 !important;
-    }
-    
-    .bookmark-list.flex.flex-col #home-away.bookmark-list {
-        grid-column: span 1;
-    }
-}
-
 /* Service Widgets Border Styles */
 #information-widgets,
-#layout-groups,
+.bookmark-text,
 .service-card {
-  border-width: 5px;
-  border-radius: .375rem;
+  border-width: var(--my-border-width);
+  border-radius: var(--my-border-radius);
   border-color: var(--my-border-color);
   backdrop-filter: var(--my-backdrop-filter);
   padding: 1px;
-  margin: 0px;
+  margin: 5px;
   border-spacing: 0;
 }
 
+@keyframes borderGradient {
+  0% {
+    border-image: linear-gradient(0deg, var(--my-border-color), rgba(255,255,255,0.2), var(--my-hover-border-color)) 1;
+  }
+  5% {
+    border-image: linear-gradient(18deg, var(--my-border-color), rgba(255,255,255,0.2), var(--my-hover-border-color)) 1;
+  }
+  10% {
+    border-image: linear-gradient(36deg, var(--my-border-color), rgba(255,255,255,0.2), var(--my-hover-border-color)) 1;
+  }
+  15% {
+    border-image: linear-gradient(54deg, var(--my-border-color), rgba(255,255,255,0.2), var(--my-hover-border-color)) 1;
+  }
+  20% {
+    border-image: linear-gradient(72deg, var(--my-border-color), rgba(255,255,255,0.2), var(--my-hover-border-color)) 1;
+  }
+  25% {
+    border-image: linear-gradient(90deg, var(--my-border-color), rgba(255,255,255,0.2), var(--my-hover-border-color)) 1;
+  }
+  30% {
+    border-image: linear-gradient(108deg, var(--my-border-color), rgba(255,255,255,0.2), var(--my-hover-border-color)) 1;
+  }
+  35% {
+    border-image: linear-gradient(126deg, var(--my-border-color), rgba(255,255,255,0.2), var(--my-hover-border-color)) 1;
+  }
+  40% {
+    border-image: linear-gradient(144deg, var(--my-border-color), rgba(255,255,255,0.2), var(--my-hover-border-color)) 1;
+  }
+  45% {
+    border-image: linear-gradient(162deg, var(--my-border-color), rgba(255,255,255,0.2), var(--my-hover-border-color)) 1;
+  }
+  50% {
+    border-image: linear-gradient(180deg, var(--my-border-color), rgba(255,255,255,0.2), var(--my-hover-border-color)) 1;
+  }
+  55% {
+    border-image: linear-gradient(198deg, var(--my-border-color), rgba(255,255,255,0.2), var(--my-hover-border-color)) 1;
+  }
+  60% {
+    border-image: linear-gradient(216deg, var(--my-border-color), rgba(255,255,255,0.2), var(--my-hover-border-color)) 1;
+  }
+  65% {
+    border-image: linear-gradient(234deg, var(--my-border-color), rgba(255,255,255,0.2), var(--my-hover-border-color)) 1;
+  }
+  70% {
+    border-image: linear-gradient(252deg, var(--my-border-color), rgba(255,255,255,0.2), var(--my-hover-border-color)) 1;
+  }
+  75% {
+    border-image: linear-gradient(270deg, var(--my-border-color), rgba(255,255,255,0.2), var(--my-hover-border-color)) 1;
+  }
+  80% {
+    border-image: linear-gradient(288deg, var(--my-border-color), rgba(255,255,255,0.2), var(--my-hover-border-color)) 1;
+  }
+  85% {
+    border-image: linear-gradient(306deg, var(--my-border-color), rgba(255,255,255,0.2), var(--my-hover-border-color)) 1;
+  }
+  90% {
+    border-image: linear-gradient(324deg, var(--my-border-color), rgba(255,255,255,0.2), var(--my-hover-border-color)) 1;
+  }
+  95% {
+    border-image: linear-gradient(342deg, var(--my-border-color), rgba(255,255,255,0.2), var(--my-hover-border-color)) 1;
+  }
+  100% {
+    border-image: linear-gradient(360deg, var(--my-border-color), rgba(255,255,255,0.2), var(--my-hover-border-color)) 1;
+  }
+}
 
+[id$="-tab"].active {
+  animation: borderGradient 1s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  will-change: border-image;
+}
 
 /* All Tab Styles */
 #myTab {
-  font: 16px/2 'Manrope', sans-serif;
   padding: 5px;
   background: none;
   backdrop-filter: none;
@@ -95,28 +136,19 @@
 
 /* Tab Border Styles */
 button[id$='-tab'] {
-  border-width: 5px;
-  border-radius: .375rem;
+  border-width: var(--my-border-width);
+  border-radius: var(--my-border-radius);
   border-color: var(--my-border-color);
   backdrop-filter: var(--my-backdrop-filter);
   padding: 1px;
-  margin: -8px;
+  margin: 1px;
   border-spacing: 0;
 }
 
 /* Tab:focus Styles */
 button[id$='-tab']:focus {
-  border-color: var(--my-focus-border-color);
-  padding: 5px 15px;
-  margin: -8;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 40px;
-  backdrop-filter: var(--my-backdrop-filter);
-  white-space: nowrap;
-  transition: all 0.3s ease;
+  animation: borderGradient 1s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  will-change: border-image;
 }
 
 /* Service Card Styles */
@@ -165,8 +197,10 @@ button[id$='-tab']:focus {
   }
 
   .information-widget-resource {
-    margin-left: 20px !important;
-    margin-right: 20px !important;
+    margin-left: 20px;
+    margin-right: 20px;
+    flex-wrap: wrap;
+    justify-content: center;	
   }
 
   /* Bookmark Layout */
@@ -191,16 +225,18 @@ button[id$='-tab']:focus {
   }
 
   #myTab {
+    padding: 5px;
+    background: none;
+    backdrop-filter: none;
+    display: flex;
+    justify-content: flex-start;  
     flex-wrap: wrap;
     justify-content: center;
     gap: 10px;
   }
 
-  #Links-tab,
-  #Servarr-tab,
-  #Docker-tab,
-  #Stats-tab {
-    border-width: 3px;
+  button[id$='-tab'] {
+    border-width: var(--my-border-width);
     padding: 10px;
     margin: 0;
     width: calc(50% - 5px);
@@ -226,16 +262,18 @@ button[id$='-tab']:focus {
     gap: 5px;
   }
 
-  #Links-tab,
-  #Servarr-tab,
-  #Docker-tab,
-  #Stats-tab {
-    flex: 0 0 auto;
-    width: auto;
-    white-space: nowrap;
+  .information-widget-resource {
+    margin-left: 20px;
+    margin-right: 20px;
+    flex-wrap: wrap;
+    justify-content: center;		
+  }
+
+  button[id$='-tab'] {
+    border-width: var(--my-border-width);
     padding: 8px;
-    border-width: 2px;
     min-height: 36px;
+    width: 100%;
   }
 }
 
@@ -256,15 +294,14 @@ button[id$='-tab']:focus {
   }
 
   .information-widget-resource {
-    margin-left: 20px !important;
-    margin-right: 20px !important;
+    margin-left: 20px;
+    margin-right: 20px;
+    flex-wrap: wrap;
+    justify-content: center;		
   }
 
-  #Links-tab,
-  #Servarr-tab,
-  #Docker-tab,
-  #Stats-tab {
-    border-width: 2px;
+  button[id$='-tab'] {
+    border-width: var(--my-border-width);
     padding: 8px;
     min-height: 36px;
     width: 100%;
@@ -355,4 +392,15 @@ button[id$='-tab']:focus {
             }
         }		
     }
+}
+
+
+
+
+
+/*==================================
+  FOOTER GROUP STYLES
+==================================*/
+#footer {
+  display: none;
 }
