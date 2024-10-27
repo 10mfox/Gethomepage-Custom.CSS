@@ -8,7 +8,7 @@ import webbrowser
 class GetHomepageWizard:
     def __init__(self, root):
         self.root = root
-        self.root.title("Gethomepage CSS Wizard")
+        self.root.title("Gethomepage t CSS Wizard")
         root.state('zoomed')
         
         # Style configuration
