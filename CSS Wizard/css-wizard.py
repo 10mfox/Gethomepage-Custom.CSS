@@ -1,9 +1,53 @@
+import subprocess
+import sys
 import os
+from pathlib import Path
+import pkg_resources
 import json
 import tkinter as tk
 from tkinter import ttk, colorchooser, filedialog, messagebox
-from pathlib import Path
-import webbrowser
+
+def check_python_version():
+    """Check if Python version is 3.6 or higher"""
+    if sys.version_info < (3, 6):
+        print("Error: Python 3.6 or higher is required")
+        sys.exit(1)
+
+def check_tkinter():
+    """Check if tkinter is properly installed"""
+    try:
+        import tkinter
+        return True
+    except ImportError:
+        return False
+
+def install_requirements():
+    """Install or verify all requirements"""
+    print("Checking requirements...")
+    
+    # Check Python version
+    check_python_version()
+    print("✓ Python version check passed")
+    
+    # Check and install tkinter if needed
+    if not check_tkinter():
+        print("! Tkinter not found")
+        if sys.platform == "linux":
+            print("Installing tkinter via system package manager...")
+            try:
+                # For Debian/Ubuntu
+                subprocess.check_call(["sudo", "apt-get", "install", "python3-tk"])
+            except subprocess.CalledProcessError:
+                try:
+                    # For Fedora
+                    subprocess.check_call(["sudo", "dnf", "install", "python3-tkinter"])
+                except subprocess.CalledProcessError:
+                    print("Error: Could not install tkinter. Please install it manually.")
+                    sys.exit(1)
+    else:
+        print("✓ Tkinter is installed")
+    
+    print("\n✓ All requirements satisfied!")
 
 class GetHomepageWizard:
     def __init__(self, root):
@@ -391,11 +435,17 @@ button[id$='-tab']:focus {
         dialog.geometry(f'{width}x{height}+{x}+{y}')
 
 def main():
+    # First check and install requirements
+    install_requirements()
+    
+    # Then start the application
     root = tk.Tk()
     app = GetHomepageWizard(root)
+    
     # Bind preview update to variable changes
     for var in app.css_vars.values():
         var.trace_add("write", lambda *args: app.update_preview())
+    
     app.update_preview()  # Initial preview
     root.mainloop()
 
