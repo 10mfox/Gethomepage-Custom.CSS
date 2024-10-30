@@ -9,7 +9,7 @@ class GetHomepageWizard:
     def __init__(self, root):
         self.root = root
         self.root.title("Gethomepage CSS Wizard")
-        root.state('zoomed')
+        root.state('normal')
         
         # Style configuration
         self.style = ttk.Style()
