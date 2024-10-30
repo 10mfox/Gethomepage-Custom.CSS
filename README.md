@@ -19,7 +19,8 @@ I've put together this comprehensive list of CSS classes, IDs, and resources for
 13. [Contributing](#contributing)
 14. [Version Compatibility](#version-compatibility)
 15. [Examples](#examples)
-16. [Resources](#resources)
+16. [Css Wizard](#To-use-this-css-wizard)
+17. [Resources](#resources)
 
 ## Background
 - `#page_container`: for the background of entire homepage
@@ -144,6 +145,14 @@ Please submit your contributions [here](https://github.com/10mfox/gethomepage-Cu
 
 ## Version Compatibility
 This guide is compatible with Gethomepage version 0.9.11 and above. Please note that future versions may introduce changes that affect these selectors. We strive to keep this guide up-to-date, but always refer to the official Gethomepage documentation for the most current information.
+
+## To use this css wizard:
+
+### Save setup.py and css-wizard.py in a directory of your choosing they have to be in the same directory
+## How To Run it:
+1. On Windows: Double-click the script or run python setup.py in Command Prompt
+2. On Linux: Open terminal and cd to the directory the setup.py and css-wizard.py are then run python3 setup.py or make it executable with chmod +x setup.py and run ./setup.py
+
 
 ## Examples
 Here's a brief example of how to use these classes and IDs in a custom CSS file:
