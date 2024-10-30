@@ -9,7 +9,10 @@ class GetHomepageWizard:
     def __init__(self, root):
         self.root = root
         self.root.title("Gethomepage CSS Wizard")
-        root.state('normal')
+        try:
+            root.state('zoomed')  # Try to set window to zoomed/maximized state
+        except:
+            root.state('normal')  # Fallback to normal state if zoomed fails
         
         # Style configuration
         self.style = ttk.Style()
