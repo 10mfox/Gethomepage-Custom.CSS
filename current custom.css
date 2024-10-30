@@ -162,68 +162,15 @@ button[id$='-tab']:focus {
   z-index: -1;
 }
 
-/* Layout and Spacing */
+/* Information Widgets Spacing */
 .information-widget-resource {
   margin-left: 42px;
   margin-right: 42px;
   gap: 20px;
 }
 
-#information-widgets,
-#bookmark-group,
-#layout-groups {
-  margin: 15px;
-}
-
 /* Mobile Styles */
 @media screen and (max-width: 768px) {
-  body {
-    font-size: 14px;
-    line-height: 1.5;
-    white-space: normal;
-    -webkit-overflow-scrolling: touch;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-
-  ::-webkit-scrollbar {
-    display: none;
-  }
-
-  .service-card {
-    border-width: 3px;
-    padding: 8px;
-    margin: 8px 0;
-  }
-
-  .information-widget-resource {
-    margin-left: 20px;
-    margin-right: 20px;
-    flex-wrap: wrap;
-    justify-content: center;	
-  }
-
-  /* Bookmark Layout */
-  @media(min-width: 500px) {
-      .bookmark-list.flex.flex-col {
-          display: grid !important;
-          grid-template-columns: repeat(2, 1fr) !important;
-          gap: 0rem;
-      }
-      
-      .bookmark-list.flex.flex-col .service {
-          grid-column: span 2;
-      }
-      
-      .bookmark-list.flex.flex-col .service > .mb-2 {
-          margin-bottom: 0 !important;
-      }
-      
-      .bookmark-list.flex.flex-col #home-away.bookmark-list {
-          grid-column: span 1;
-      }
-  }
-
   #myTab {
     padding: 5px;
     background: none;
@@ -234,8 +181,7 @@ button[id$='-tab']:focus {
     justify-content: center;
     gap: 10px;
   }
-
-  button[id$='-tab'] {
+  button[id$='-tab']::focus::hover {
     border-width: var(--my-border-width);
     padding: 10px;
     margin: 0;
@@ -246,14 +192,16 @@ button[id$='-tab']:focus {
 
 /* Landscape-specific Mobile Styles */
 @media screen and (max-width: 850px) and (orientation: landscape) {
-  body {
-    font-size: 13px;
+  #widgets-wrap,
+  .service-card  {
+    gap: 1em;
   }
-
-  #widgets-wrap {
-    column-gap: 0rem
+  .information-widget-resource {
+    margin-left: 20px;
+    margin-right: 20px;
+    flex-wrap: wrap;
+    justify-content: center;		
   }
-
   #myTab {
     flex-wrap: nowrap;
     overflow-x: auto;
@@ -261,73 +209,30 @@ button[id$='-tab']:focus {
     padding-bottom: 10px;
     gap: 5px;
   }
-
-  .information-widget-resource {
-    margin-left: 20px;
-    margin-right: 20px;
-    flex-wrap: wrap;
-    justify-content: center;		
-  }
-
-  button[id$='-tab'] {
+  button[id$='-tab']::focus::hover {
     border-width: var(--my-border-width);
-    padding: 8px;
-    min-height: 36px;
+    margin: auto;
     width: 100%;
   }
 }
 
 /* Portrait-specific Mobile Styles */
 @media screen and (max-width: 480px) and (orientation: portrait) {
-  body {
-    font-size: 12px;
+  #widgets-wrap,
+  .service-card  {
+    gap: 1em;
   }
-
-  .service-card {
-    border-width: 2px;
-    padding: 5px;
-    margin: 5px 0;
-  }
-
-  #widgets-wrap {
-    column-gap: 0rem
-  }
-
   .information-widget-resource {
     margin-left: 20px;
     margin-right: 20px;
     flex-wrap: wrap;
     justify-content: center;		
   }
-
-  button[id$='-tab'] {
+  button[id$='-tab']::focus::hover {
     border-width: var(--my-border-width);
-    padding: 8px;
-    min-height: 36px;
+    margin: auto;
     width: 100%;
   }
-  
-  /* Bookmark Layout */
-  @media(min-width: 500px) {
-      .bookmark-list.flex.flex-col {
-          display: grid !important;
-          grid-template-columns: repeat(2, 1fr) !important;
-          gap: 2rem;
-      }
-      
-      .bookmark-list.flex.flex-col .service {
-          grid-column: span 2;
-      }
-      
-      .bookmark-list.flex.flex-col .service > .mb-2 {
-          margin-bottom: 0 !important;
-      }
-      
-      .bookmark-list.flex.flex-col #home-away.bookmark-list {
-          grid-column: span 1;
-      }
-  }
-  
 }
 
 /* Recently Added Section */
@@ -404,3 +309,24 @@ button[id$='-tab']:focus {
 #footer {
   display: none;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
