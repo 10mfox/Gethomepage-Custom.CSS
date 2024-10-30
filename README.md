@@ -147,6 +147,7 @@ Please submit your contributions [here](https://github.com/10mfox/gethomepage-Cu
 This guide is compatible with Gethomepage version 0.9.11 and above. Please note that future versions may introduce changes that affect these selectors. We strive to keep this guide up-to-date, but always refer to the official Gethomepage documentation for the most current information.
 
 ## To use this css wizard:
+<img width="961" alt="Screenshot (21)" src="https://github.com/user-attachments/assets/f543c829-2f8e-403b-be4f-49b5a8a20a34">
 
 Save setup.py and css-wizard.py in a directory of your choosing they have to be in the same directory
 
