@@ -1,4 +1,5 @@
 # Gethomepage Custom CSS Guide
+Make sure you read through [Table of Contents](#table-of-contents)
 ![Status-Page-10-26-2024_12_01_PM](https://github.com/user-attachments/assets/a8259da2-1bb4-4ac1-be3a-7acc95d56e0b)
 
 I've put together this comprehensive list of CSS classes, IDs, and resources for [gethomepage](https://gethomepage.dev/). This guide will help you target specific elements for custom styling and get started on your custom.css file.
