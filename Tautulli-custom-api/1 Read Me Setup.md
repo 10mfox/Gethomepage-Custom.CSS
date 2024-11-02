@@ -1,5 +1,8 @@
 # Custom API Proxy Service Setup Guide
 
+![Homelab-11-02-2024_01_24_PM](https://github.com/user-attachments/assets/a7e8f944-a4fd-4f1a-b605-72465bced4cb)
+
+
 ## File Structure
 First, create the following file structure:
 ```
