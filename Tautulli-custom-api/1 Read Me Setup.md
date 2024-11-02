@@ -101,3 +101,146 @@ cd api
 npm install
 node server.js
 ```
+
+# services.yaml
+
+```- Recently Added:
+     - Movies:
+        icon: mdi-filmstrip
+        id: list
+        widget:
+          type: customapi
+          url: http://{{HOMEPAGE_VAR_LOCAL_IP}}:3008/api/recent/movies
+          method: GET
+          display: list
+          mappings:
+            - field:
+                response:
+                  data:
+                    recently_added:
+                      0: title
+              additionalField:
+                field:
+                  response:
+                    data:
+                      recently_added:
+                        0: year
+                color: theme
+            - field:
+                response:
+                  data:
+                    recently_added:
+                      1: title
+              color: theme
+              additionalField:
+                field:
+                  response:
+                    data:
+                      recently_added:
+                        1: year
+                color: theme
+            - field:
+                response:
+                  data:
+                    recently_added:
+                      2: title
+              additionalField:
+                field:
+                  response:
+                    data:
+                      recently_added:
+                        2: year
+                color: theme
+            - field:
+                response:
+                  data:
+                    recently_added:
+                      3: title
+              additionalField:
+                field:
+                  response:
+                    data:
+                      recently_added:
+                        3: year
+                color: theme
+            - field:
+                response:
+                  data:
+                    recently_added:
+                      4: title
+              additionalField:
+                field:
+                  response:
+                    data:
+                      recently_added:
+                        4: year
+                color: theme               
+     - Shows:
+         icon: mdi-television-classic
+         id: list
+         widget:
+           type: customapi
+           url: http://{{HOMEPAGE_VAR_LOCAL_IP}}:3008/api/recent/shows
+           method: GET
+           display: list
+           mappings:
+              - field:
+                  response:
+                    data:
+                      recently_added:
+                        0: grandparent_title
+                additionalField:
+                  field:
+                    response:
+                      data:
+                        recently_added:
+                          0: combined_title
+                  color: theme
+              - field:
+                  response:
+                    data:
+                      recently_added:
+                        1: grandparent_title
+                additionalField:
+                  field:
+                    response:
+                      data:
+                        recently_added:
+                          1: combined_title
+                  color: theme
+              - field:
+                  response:
+                    data:
+                      recently_added:
+                        2: grandparent_title
+                additionalField:
+                  field:
+                    response:
+                      data:
+                        recently_added:
+                          2: combined_title
+                  color: theme
+              - field:
+                  response:
+                    data:
+                      recently_added:
+                        3: grandparent_title
+                additionalField:
+                  field:
+                    response:
+                      data:
+                        recently_added:
+                          3: combined_title
+                  color: theme
+              - field:
+                  response:
+                    data:
+                      recently_added:
+                        4: grandparent_title
+                additionalField:
+                  field:
+                    response:
+                      data:
+                        recently_added:
+                          4: combined_title
+                  color: theme```
