@@ -2,6 +2,9 @@
 
 A web-based CSS editor specifically designed for customizing Gethomepage. This tool provides an intuitive interface for creating and managing basic custom CSS styles for your Homepage instance.
 
+![CSS-Wizard-11-06-2024_08_40_PM](https://github.com/user-attachments/assets/1b5ec82c-7e89-4a83-915d-aa9796392cd9)
+
+
 ## Features
 
 - 🎨 Visual CSS editing interface
