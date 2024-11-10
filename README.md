@@ -33,7 +33,7 @@ A web-based CSS editor specifically designed for customizing Gethomepage. This t
 ```
   homepage-css-editor:
     container_name: Homepage-Css-Editor  
-    image: ghcr.io/10mfox/gethomepage-custom.css:latest
+    image: ghcr.io/10mfox/gethomepage-custom-css:latest
     ports:
       - "${CSS_EDITOR_PORT}:5173"     
     env_file:
