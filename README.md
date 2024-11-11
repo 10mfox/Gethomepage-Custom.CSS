@@ -43,12 +43,6 @@ A web-based CSS editor specifically designed for customizing Gethomepage. This t
 
 ## Configuration
 
-### Environment Variables
-
-| Variable | Example |
-|----------|-------------|
-| CSS_EDITOR_PORT | 3030 |
-
 ### Configuration Files
 
 When saving your configuration, two files are generated:
