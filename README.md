@@ -2,10 +2,6 @@
 
 A powerful CSS customization tool for Gethomepage, featuring live preview, color presets, and responsive design settings.
 
-![CSS-Wizard-11-11-2024_10_39_AM](https://github.com/user-attachments/assets/64a2683b-4706-487e-988b-c82932db33da)
-
-
-
 ## 🚀 Features
 
 - **Live Preview**: See your changes in real-time
@@ -28,17 +24,17 @@ A powerful CSS customization tool for Gethomepage, featuring live preview, color
 ---
 
 services:
-  homepage-css-editor:
-    container_name: Homepage-Css-Editor  
-    image: ghcr.io/10mfox/gethomepage-custom-css:latest
+  homepage-css-editor-beta:
+    container_name: Homepage-Css-Editor-Beta  
+    image: ghcr.io/10mfox/gethomepage-custom-css:beta
     ports:
-      - "5555:5555" 
+      - "5556:5556" 
     environment:
-      - PORT=5555    
+      - PORT=5556    
     restart: always    
     network_mode: bridge
 ```
-4. Access the application at `http://localhost:5555`
+4. Access the application at `http://localhost:5556`
 
 ## Configuration
 
