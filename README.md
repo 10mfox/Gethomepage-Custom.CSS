@@ -38,6 +38,9 @@ services:
     restart: always    
     network_mode: bridge
 ```
+## Requirements
+- `PORT`: Server port (default: 5555)
+
 4. Access the application at `http://localhost:5555`
 
 ## Configuration
