@@ -39,9 +39,14 @@ services:
     network_mode: bridge
 ```
 ## Requirements
-- `PORT`: Server port (default: 5555)
+- `    ports:
+      - "5555:5555" 
+    environment:
+      - PORT=5555
+`  
+- you can change to what you want but all ports have to match
 
-4. Access the application at `http://localhost:5555`
+- Access the application at `http://localhost:5555`
 
 ## Configuration
 
