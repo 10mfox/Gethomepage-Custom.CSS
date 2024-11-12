@@ -2,7 +2,8 @@
 
 A powerful CSS customization tool for Gethomepage, featuring live preview, color presets, and responsive design settings.
 
-![CSS-Wizard-11-11-2024_10_39_AM](https://github.com/user-attachments/assets/64a2683b-4706-487e-988b-c82932db33da)
+![CSS-Wizard-11-12-2024_05_03_PM](https://github.com/user-attachments/assets/21647cfa-5f3a-46a9-bf35-92674439fddd)
+
 
 
 
