@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base styles */
+:root {
+  --font-inter: 'Inter', sans-serif;
+}
+
+/* Dark mode styles */
+.dark {
+  color-scheme: dark;
+}
+
+/* Utility classes */
+@layer utilities {
+  .backdrop-blur {
+    backdrop-filter: blur(8px);
+  }
+}
