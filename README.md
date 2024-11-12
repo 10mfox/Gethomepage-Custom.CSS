@@ -10,7 +10,7 @@ A powerful CSS customization tool for Gethomepage, featuring live preview, color
 ## 🚀 Features
 
 - **Live Preview**: See your changes in real-time
-- **Color Management**: Built-in color picker with preset themes
+- **Color Management**: Built-in color picker with preset themes and also save and delete custom themes
 - **Style Customization**: Control fonts, borders, and effects
 - **Dark/Light Mode**: Full support for both themes
 - **Responsive Design**: Mobile-friendly interface
