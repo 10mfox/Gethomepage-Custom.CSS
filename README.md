@@ -2,7 +2,8 @@
 
 A powerful CSS customization tool for Gethomepage, featuring live preview, color presets, and an intuitive interface for creating beautiful, responsive designs.
 
-![CSS-Wizard-11-12-2024_05_03_PM](https://github.com/user-attachments/assets/21647cfa-5f3a-46a9-bf35-92674439fddd)
+![CSS-Wizard-11-14-2024_09_09_AM](https://github.com/user-attachments/assets/cd1bebd0-2002-4296-8def-0a5b09a1007a)
+
 
 ## ✨ Features
 
@@ -35,13 +36,13 @@ Create or update your `docker-compose.yml`:
 
 ```yaml
 services:
-  homepage-css-editor:
-    container_name: Homepage-CSS-Editor
-    image: ghcr.io/10mfox/gethomepage-custom-css:latest
+  homepage-css-editor-beta:
+    container_name: Homepage-CSS-Editor-Beta
+    image: ghcr.io/10mfox/gethomepage-custom-css:beta
     ports:
-      - "5555:5555"  # Can be changed to any available port
+      - "5556:5556"  # Can be changed to any available port
     environment:
-      - PORT=5555    # Must match the port mapping above
+      - PORT=5556    # Must match the port mapping above
     restart: always
     network_mode: bridge
 ```
@@ -49,12 +50,12 @@ services:
 ### Important Configuration Notes
 
 - The port number in the `ports` mapping must match the `PORT` environment variable
-- Example: To use port 5555:
+- Example: To use port 5556:
   ```yaml
   ports:
-    - "5555:5555"
+    - "5556:5556"
   environment:
-    - PORT=5555
+    - PORT=5556
   ```
 
 ### Starting the Service
@@ -85,21 +86,6 @@ services:
 4. **Preview and Export**:
    - Use the live preview to verify changes
    - Export your configuration when satisfied
-
-### Built-in Themes
-
-The CSS Wizard includes professionally designed themes:
-
-- 🌙 Dark Matrix - Classic terminal look
-- 🌊 Ocean Deep - Rich blue tones
-- 🧛 Dracula - Popular dark theme
-- ❄️ Nord - Arctic-inspired palette
-- 🌆 Tokyo Night - Modern code editor theme
-- 🌅 Synthwave - 80s retro aesthetics
-- 🌲 Forest Night - Natural green tones
-- 💜 Deep Purple - Rich purple accents
-- 🌅 Sunset - Warm, inviting colors
-- More themes regularly added!
 
 ## 💾 Saving & Loading
 
