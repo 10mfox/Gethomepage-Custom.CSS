@@ -1,23 +1,19 @@
 # CSS Wizard for Gethomepage
 
-A powerful CSS customization tool for Gethomepage, featuring live preview, color presets, and an intuitive interface for creating beautiful, responsive designs.
+A powerful CSS customization tool for Gethomepage, featuring live preview and an intuitive interface for creating beautiful, responsive designs.
 
-![CSS-Wizard-11-12-2024_05_03_PM](https://github.com/user-attachments/assets/21647cfa-5f3a-46a9-bf35-92674439fddd)
+![CSS-Wizard-11-14-2024_09_09_AM](https://github.com/user-attachments/assets/bd8487cc-5695-4ffc-b40f-8feccf613e26)
 
 ## ✨ Features
 
-- **Live Preview**: Instantly visualize your changes with an interactive demo
-- **Theme Management**:
-  - Built-in color picker with advanced controls
-  - Rich collection of pre-built themes
-  - Create, save, and manage custom themes
-  - Import/export theme configurations
+- **Live Preview**: Real-time visualization of changes
+- **Custom Presets**: Create, save, and manage custom themes
 - **Comprehensive Styling**:
-  - Font customization with extensive font library
+  - Font customization
   - Border controls (width, radius, colors)
   - Backdrop filters and effects
   - Hover and focus states
-- **Dark/Light Mode**: Seamless switching between themes
+- **Dark/Light Mode**: Seamless theme switching
 - **Responsive Design**: Mobile-optimized interface
 - **Feature Toggles**: Enable/disable specific styling features
 
@@ -39,9 +35,9 @@ services:
     container_name: Homepage-CSS-Editor
     image: ghcr.io/10mfox/gethomepage-custom-css:latest
     ports:
-      - "5555:5555"  # Can be changed to any available port
+      - "5556:5556"  # Can be changed to any available port
     environment:
-      - PORT=5555    # Must match the port mapping above
+      - PORT=5556    # Must match the port mapping above
     restart: always
     network_mode: bridge
 ```
@@ -49,12 +45,12 @@ services:
 ### Important Configuration Notes
 
 - The port number in the `ports` mapping must match the `PORT` environment variable
-- Example: To use port 5555:
+- Example: To use port 5556:
   ```yaml
   ports:
-    - "5555:5555"
+    - "5556:5556"
   environment:
-    - PORT=5555
+    - PORT=5556
   ```
 
 ### Starting the Service
@@ -68,7 +64,7 @@ services:
 ### Basic Workflow
 
 1. **Configure Features**:
-   - Use the Feature Toggles dropdown to enable/disable specific styling options
+   - Use Feature Toggles to enable/disable styling options
    - Toggle options like fonts, colors, borders, and effects
 
 2. **Customize Styles**:
@@ -77,29 +73,13 @@ services:
    - Configure backdrop filters
    - Choose colors using the color picker
 
-3. **Apply Themes**:
-   - Select from built-in presets
+3. **Save Custom Presets**:
    - Create and save custom themes
    - Import previously saved configurations
 
 4. **Preview and Export**:
    - Use the live preview to verify changes
    - Export your configuration when satisfied
-
-### Built-in Themes
-
-The CSS Wizard includes professionally designed themes:
-
-- 🌙 Dark Matrix - Classic terminal look
-- 🌊 Ocean Deep - Rich blue tones
-- 🧛 Dracula - Popular dark theme
-- ❄️ Nord - Arctic-inspired palette
-- 🌆 Tokyo Night - Modern code editor theme
-- 🌅 Synthwave - 80s retro aesthetics
-- 🌲 Forest Night - Natural green tones
-- 💜 Deep Purple - Rich purple accents
-- 🌅 Sunset - Warm, inviting colors
-- More themes regularly added!
 
 ## 💾 Saving & Loading
 
