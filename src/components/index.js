@@ -1,8 +1,15 @@
-export { FeatureToggles } from './FeatureToggles';
+// Re-export all components and hooks
+export { ConfigProvider, useConfig } from './config/ConfigProvider';
+export { useFileActions } from './actions/FileActions';
+export { usePresetManager } from './preset/PresetManager';
+export { default as PresetTogglesBar } from './PresetTogglesBar';
+
+// Layout components
 export { Header } from './layout/Header';
-export { FeatureBar } from './layout/FeatureBar';
 export { MainContent } from './layout/MainContent';
-export { GeneralSettings } from './settings/GeneralSettings';
-export { StyleSettings } from './settings/StyleSettings';
-export { LivePreview } from './preview/LivePreview';
+
+// Color components
+export { SavePresetDialog } from './color/SavePresetDialog';
 export { ColorSettings } from './color/ColorSettings';
+export { ColorPicker } from './color/ColorPicker';
+export { PresetButton } from './color/PresetButton';

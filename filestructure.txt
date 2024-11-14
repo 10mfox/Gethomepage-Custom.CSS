@@ -1,0 +1,70 @@
+📁 Project Root
+├── 📄 Dockerfile
+├── 📄 package.json
+├── 📄 vite.config.js
+├── 📄 index.html
+├── 📄 tailwind.config.js
+├── 📄 postcss.config.js
+├── 📄 .gitignore
+├── 📄 README.md
+├── 📄 LICENSE
+├── 📄 .eslintrc.json
+├── 📄 .prettierrc
+├── 📄 .dockerignore
+├── 📄 compose.yaml
+└── 📁 src
+    ├── 📁 components
+    │   ├── 📁 actions
+    │   │   └── 📄 FileActions.jsx
+    │   │
+    │   ├── 📁 color
+    │   │   ├── 📄 ColorPicker.jsx
+    │   │   ├── 📄 ColorSettings.jsx
+    │   │   ├── 📄 PresetButton.jsx
+    │   │   ├── 📄 SavePresetDialog.jsx
+    │   │   ├── 📄 CustomPresets.jsx
+    │   │   ├── 📄 BuiltInPresets.jsx
+    │   │   ├── 📄 presets.js
+    │   │   └── 📄 index.js
+    │   │
+    │   ├── 📁 config
+    │   │   ├── 📄 ConfigProvider.jsx
+    │   │   ├── 📁 generators
+    │   │   │   ├── 📄 variables.js
+    │   │   │   ├── 📄 keyframes.js
+    │   │   │   └── 📄 styles.js
+    │   │   ├── 📁 constants
+    │   │   │   └── 📄 selectors.js
+    │   │   ├── 📁 element-styles
+    │   │   │   ├── 📄 baseStyles.js
+    │   │   │   ├── 📄 borderStyles.js
+    │   │   │   ├── 📄 interactiveStyles.js
+    │   │   │   ├── 📄 layoutStyles.js
+    │   │   │   ├── 📄 responsiveStyles.js
+    │   │   │   └── 📄 index.js
+    │   │   └── 📄 CSSGenerator.js
+    │   │
+    │   ├── 📁 layout
+    │   │   ├── 📄 Header.jsx
+    │   │   ├── 📄 MainContent.jsx
+    │   │   ├── 📄 GeneratedCSS.jsx
+    │   │   └── 📄 index.js
+    │   │
+    │   ├── 📁 preset
+    │   │   └── 📄 PresetManager.jsx
+    │   │
+    │   ├── 📁 preview
+    │   │   ├── 📄 LivePreview.jsx
+    │   │   └── 📄 index.js
+    │   │
+    │   ├── 📁 settings
+    │   │   ├── 📄 StyleSettings.jsx
+    │   │   ├── 📄 GeneralSettings.jsx
+    │   │   └── 📄 index.js
+    │   │
+    │   ├── 📄 PresetTogglesBar.jsx
+    │   └── 📄 index.js
+    │
+    ├── 📄 App.jsx
+    ├── 📄 main.jsx
+    └── 📄 index.css

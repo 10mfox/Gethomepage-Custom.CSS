@@ -1,124 +1,201 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { ColorPicker } from './ColorPicker';
-import { CustomPresets } from './CustomPresets';
-import { BuiltInPresets } from './BuiltInPresets';
-import { SavePresetDialog } from './SavePresetDialog';
-import { BUILT_IN_PRESETS } from './presets';
+import { ArrowDown, ArrowUp } from 'lucide-react';
+import ElementColorSettings from './ElementColorSettings';
 
-export const ColorSettings = ({ darkMode, cssVars, setCssVars }) => {
-  // State for custom presets
-  const [customPresets, setCustomPresets] = useState(() => {
-    try {
-      const stored = localStorage.getItem('cssWizardCustomPresets');
-      return stored ? JSON.parse(stored) : [];
-    } catch {
-      return [];
-    }
+// Define base color groups
+const baseColorGroups = {
+  'Basic Colors': {
+    'text_color': { label: 'Text Color', toggle: 'enable_text_color' },
+    'background_color': { label: 'Background Color', toggle: 'enable_background' }
+  }
+};
+
+export const ColorSettings = ({ darkMode, cssVars, setCssVars, toggles }) => {
+  const [expandedGroups, setExpandedGroups] = React.useState({
+    'Basic Colors': true,
+    'Animation Settings': true
   });
-
-  // State for save preset dialog
-  const [isAddingPreset, setIsAddingPreset] = useState(false);
-  const [saveError, setSaveError] = useState('');
-
-  // Save custom presets to localStorage
-  useEffect(() => {
-    try {
-      localStorage.setItem('cssWizardCustomPresets', JSON.stringify(customPresets));
-    } catch {
-      // Silently fail if localStorage is not available
-    }
-  }, [customPresets]);
-
-  // Filter only color-related settings
-  const colorSettings = Object.entries(cssVars).filter(([key]) => key.includes('color'));
-
-  // Handle saving new preset
-  const handleSavePreset = (name, description) => {
-    if (!name.trim()) {
-      setSaveError('Please enter a preset name');
-      return;
-    }
-
-    // Check for duplicate names
-    if (customPresets.some(preset => preset.name === name.trim())) {
-      setSaveError('A preset with this name already exists');
-      return;
-    }
-
-    const newPreset = {
-      name: name.trim(),
-      description: description.trim(),
-      colors: Object.fromEntries(colorSettings),
-      isCustom: true
-    };
-
-    setCustomPresets(prev => [...prev, newPreset]);
-    setIsAddingPreset(false);
-    setSaveError('');
-  };
-
-  // Handle deleting custom preset
-  const handleDeletePreset = (presetName) => {
-    const shouldDelete = window.confirm(`Are you sure you want to delete the preset "${presetName}"?`);
-    if (shouldDelete) {
-      setCustomPresets(prev => prev.filter(preset => preset.name !== presetName));
-    }
-  };
-
-  // Handle applying a preset
-  const handleApplyPreset = (preset) => {
-    setCssVars(prev => ({ ...prev, ...preset.colors }));
-  };
 
   // Handle updating a single color
   const handleColorChange = (key, value) => {
-    setCssVars(prev => ({ ...prev, [key]: value }));
+    setCssVars(prev => ({
+      ...prev,
+      [key]: value
+    }));
   };
 
+  // Toggle group expansion
+  const toggleGroup = (groupName) => {
+    setExpandedGroups(prev => ({
+      ...prev,
+      [groupName]: !prev[groupName]
+    }));
+  };
+
+  // Handle animation timing change
+  const handleTimingChange = (value) => {
+    const newValue = Math.max(1, Math.min(60, parseInt(value)));
+    
+    // Update the CSS variables
+    setCssVars(prev => ({
+      ...prev,
+      animated_time_border: `${newValue}s`
+    }));
+
+    // Force update of the CSS variable in :root
+    document.documentElement.style.setProperty('--animated-time-border', `${newValue}s`);
+  };
+
+  // Get animation duration in seconds
+  const getAnimationDuration = () => {
+    const duration = cssVars.animated_time_border || '10s';
+    return parseInt(duration.replace('s', ''));
+  };
+
+  // Check if any rotating effects or borders are enabled
+  const hasRotatingEffects = Object.entries(toggles).some(([key, value]) => 
+    value && (
+      key.startsWith('enable_rotating_borders_') || 
+      key === 'enable_rotating_hover' || 
+      key === 'enable_rotating_focus'
+    )
+  );
+
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-      {/* Left side: Colors & Borders with Custom Presets */}
-      <div className="space-y-6">
-        <div className="space-y-4">
-          {colorSettings.map(([key, value]) => (
-            <ColorPicker
-              key={key}
-              label={key}
-              value={value}
-              onChange={(newValue) => handleColorChange(key, newValue)}
-              darkMode={darkMode}
-            />
-          ))}
+    <div className="space-y-6">
+      {/* Basic Colors Section */}
+      {Object.entries(baseColorGroups).map(([groupName, colors]) => {
+        // Only show if any toggles in the group are enabled
+        const hasEnabledToggles = Object.values(colors).some(({ toggle }) => toggles[toggle]);
+        if (!hasEnabledToggles) return null;
+
+        return (
+          <div 
+            key={groupName} 
+            className={`rounded-lg border ${
+              darkMode 
+                ? 'bg-gray-800 border-gray-700' 
+                : 'bg-white border-gray-200'
+            }`}
+          >
+            {/* Group Header */}
+            <button
+              onClick={() => toggleGroup(groupName)}
+              className={`w-full px-4 py-3 flex items-center justify-between ${
+                darkMode 
+                  ? 'hover:bg-gray-700' 
+                  : 'hover:bg-gray-50'
+              } transition-colors rounded-t-lg`}
+            >
+              <h3 className={`font-medium ${darkMode ? 'text-gray-200' : 'text-gray-700'}`}>
+                {groupName}
+              </h3>
+              {expandedGroups[groupName] ? (
+                <ArrowUp className={`w-4 h-4 ${darkMode ? 'text-gray-400' : 'text-gray-500'}`} />
+              ) : (
+                <ArrowDown className={`w-4 h-4 ${darkMode ? 'text-gray-400' : 'text-gray-500'}`} />
+              )}
+            </button>
+
+            {/* Color Pickers */}
+            {expandedGroups[groupName] && (
+              <div className="p-4 space-y-4 border-t border-gray-200 dark:border-gray-700">
+                {Object.entries(colors).map(([colorKey, colorInfo]) => {
+                  if (!toggles[colorInfo.toggle]) return null;
+
+                  return (
+                    <div key={colorKey}>
+                      <ColorPicker
+                        label={colorInfo.label}
+                        value={cssVars[colorKey]}
+                        onChange={(value) => handleColorChange(colorKey, value)}
+                        darkMode={darkMode}
+                      />
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+          </div>
+        );
+      })}
+
+      {/* Animation Timing Control */}
+      {hasRotatingEffects && (
+        <div 
+          className={`rounded-lg border ${
+            darkMode 
+              ? 'bg-gray-800 border-gray-700' 
+              : 'bg-white border-gray-200'
+          }`}
+        >
+          <button
+            onClick={() => toggleGroup('Animation Settings')}
+            className={`w-full px-4 py-3 flex items-center justify-between ${
+              darkMode 
+                ? 'hover:bg-gray-700' 
+                : 'hover:bg-gray-50'
+            } transition-colors rounded-t-lg`}
+          >
+            <h3 className={`font-medium ${darkMode ? 'text-gray-200' : 'text-gray-700'}`}>
+              Animation Settings
+            </h3>
+            {expandedGroups['Animation Settings'] ? (
+              <ArrowUp className={`w-4 h-4 ${darkMode ? 'text-gray-400' : 'text-gray-500'}`} />
+            ) : (
+              <ArrowDown className={`w-4 h-4 ${darkMode ? 'text-gray-400' : 'text-gray-500'}`} />
+            )}
+          </button>
+
+          {expandedGroups['Animation Settings'] && (
+            <div className="p-4 space-y-4 border-t border-gray-200 dark:border-gray-700">
+              <div className="flex items-center space-x-4">
+                <div className="flex-1">
+                  <input
+                    type="range"
+                    min="1"
+                    max="60"
+                    value={getAnimationDuration()}
+                    onChange={(e) => handleTimingChange(e.target.value)}
+                    className={`w-full h-2 rounded-lg appearance-none cursor-pointer ${
+                      darkMode ? 'bg-gray-700' : 'bg-gray-200'
+                    }`}
+                  />
+                </div>
+                <div className="flex items-center space-x-2">
+                  <input
+                    type="number"
+                    min="1"
+                    max="60"
+                    value={getAnimationDuration()}
+                    onChange={(e) => handleTimingChange(e.target.value)}
+                    className={`w-20 p-2 border rounded ${
+                      darkMode 
+                        ? 'bg-gray-700 border-gray-600 text-white' 
+                        : 'bg-white border-gray-300'
+                    }`}
+                  />
+                  <span className={`${darkMode ? 'text-gray-200' : 'text-gray-700'}`}>
+                    seconds
+                  </span>
+                </div>
+              </div>
+              <p className={`mt-2 text-sm ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
+                Adjust the rotation speed of animated borders (1-60 seconds per rotation)
+              </p>
+            </div>
+          )}
         </div>
-
-        <CustomPresets
-          darkMode={darkMode}
-          presets={customPresets}
-          onApply={handleApplyPreset}
-          onDelete={handleDeletePreset}
-          onSaveNew={() => setIsAddingPreset(true)}
-        />
-      </div>
-
-      {/* Right side: Built-in Presets */}
-      <BuiltInPresets
-        darkMode={darkMode}
-        presets={BUILT_IN_PRESETS}
-        onApply={handleApplyPreset}
-      />
-
-      {/* Save Preset Dialog */}
-      {isAddingPreset && (
-        <SavePresetDialog
-          darkMode={darkMode}
-          onSave={handleSavePreset}
-          onClose={() => {
-            setIsAddingPreset(false);
-            setSaveError('');
-          }}
-          error={saveError}
-        />
       )}
+
+      {/* Element-specific Color Settings */}
+      <ElementColorSettings
+        darkMode={darkMode}
+        cssVars={cssVars}
+        setCssVars={setCssVars}
+        toggles={toggles}
+      />
     </div>
   );
 };

@@ -1,8 +1,7 @@
 import React from 'react';
 
-// Configuration options with expanded settings
+// Configuration options with expanded font list
 const GENERAL_SETTINGS = {
-  // Original font settings remain unchanged
   font_family: {
     label: 'Font Family',
     options: [
@@ -80,7 +79,6 @@ const GENERAL_SETTINGS = {
       { value: "Kalam", label: "Kalam - Handwriting", category: "Script" }
     ]
   },
-  // Original settings
   border_width: {
     label: 'Border Width',
     options: [
@@ -100,111 +98,6 @@ const GENERAL_SETTINGS = {
     options: [
       "blur(8px)", "blur(4px)",
       "blur(12px)", "blur(16px)"
-    ]
-  },
-  // New settings
-  box_shadow: {
-    label: 'Box Shadow',
-    options: [
-      "none",
-      "0 1px 3px rgba(0, 0, 0, 0.1)",
-      "0 4px 6px rgba(0, 0, 0, 0.1)",
-      "0 10px 15px rgba(0, 0, 0, 0.1)",
-      "0 20px 25px rgba(0, 0, 0, 0.1)",
-      "0 1px 3px rgba(0, 0, 0, 0.2)",
-      "0 4px 6px rgba(0, 0, 0, 0.2)",
-      "0 10px 15px rgba(0, 0, 0, 0.2)",
-      "0 20px 25px rgba(0, 0, 0, 0.2)",
-      "0 0 10px rgba(0, 0, 0, 0.1)",
-      "0 0 20px rgba(0, 0, 0, 0.1)"
-    ]
-  },
-  gradient_direction: {
-    label: 'Gradient Direction',
-    options: [
-      "0deg", "45deg", "90deg", "135deg",
-      "180deg", "225deg", "270deg", "315deg"
-    ]
-  },
-  text_shadow: {
-    label: 'Text Shadow',
-    options: [
-      "none",
-      "1px 1px 2px rgba(0, 0, 0, 0.3)",
-      "2px 2px 4px rgba(0, 0, 0, 0.3)",
-      "3px 3px 6px rgba(0, 0, 0, 0.3)",
-      "0 0 5px rgba(0, 0, 0, 0.3)",
-      "0 0 10px rgba(0, 0, 0, 0.3)"
-    ]
-  },
-  text_transform: {
-    label: 'Text Transform',
-    options: [
-      "none", "uppercase", "lowercase",
-      "capitalize"
-    ]
-  },
-  padding: {
-    label: 'Padding',
-    options: [
-      "0", "0.5rem", "1rem", "1.5rem",
-      "2rem", "2.5rem", "3rem"
-    ]
-  },
-  margin: {
-    label: 'Margin',
-    options: [
-      "0", "0.5rem", "1rem", "1.5rem",
-      "2rem", "2.5rem", "3rem"
-    ]
-  },
-  animation_duration: {
-    label: 'Animation Duration',
-    options: [
-      "0.2s", "0.3s", "0.5s", "0.7s",
-      "1s", "1.5s", "2s"
-    ]
-  },
-  animation_timing: {
-    label: 'Animation Timing',
-    options: [
-      "linear", "ease", "ease-in", "ease-out",
-      "ease-in-out", "cubic-bezier(0.4, 0, 0.2, 1)"
-    ]
-  },
-  scrollbar_width: {
-    label: 'Scrollbar Width',
-    options: [
-      "thin", "8px", "10px", "12px",
-      "14px", "16px"
-    ]
-  },
-  scrollbar_thumb_color: {
-    label: 'Scrollbar Thumb Color',
-    options: [
-      "#888888", "#666666", "#444444",
-      "#222222", "#000000"
-    ]
-  },
-  scrollbar_track_color: {
-    label: 'Scrollbar Track Color',
-    options: [
-      "#f1f1f1", "#e1e1e1", "#d1d1d1",
-      "#c1c1c1", "#b1b1b1"
-    ]
-  },
-  grid_columns: {
-    label: 'Grid Columns',
-    options: [
-      "1fr", "1fr 1fr", "1fr 1fr 1fr",
-      "repeat(2, 1fr)", "repeat(3, 1fr)", "repeat(4, 1fr)"
-    ]
-  },
-  grid_gap: {
-    label: 'Grid Gap',
-    options: [
-      "0.5rem", "1rem", "1.5rem",
-      "2rem", "2.5rem", "3rem"
     ]
   }
 };
@@ -226,77 +119,61 @@ export const GeneralSettings = ({ darkMode, cssVars, setCssVars }) => {
     return acc;
   }, {});
 
-  // Group settings by category for better organization
-  const settingGroups = {
-    typography: ['font_family', 'text_shadow', 'text_transform'],
-    borders: ['border_width', 'border_radius', 'box_shadow'],
-    effects: ['backdrop_filter', 'gradient_direction'],
-    spacing: ['padding', 'margin'],
-    animation: ['animation_duration', 'animation_timing'],
-    scrollbar: ['scrollbar_width', 'scrollbar_thumb_color', 'scrollbar_track_color'],
-    layout: ['grid_columns', 'grid_gap']
-  };
-
-  const renderSettingGroup = (groupName, settings) => (
-    <div key={groupName} className="space-y-4">
-      <h3 className={`font-medium ${darkMode ? 'text-gray-200' : 'text-gray-700'}`}>
-        {groupName.charAt(0).toUpperCase() + groupName.slice(1)}
-      </h3>
-      {settings.map(setting => {
-        if (setting === 'font_family') {
-          return (
-            <div key={setting}>
-              <label className={`block mb-2 font-medium ${
-                darkMode ? 'text-gray-200' : 'text-gray-700'
-              }`}>
-                Font Family
-              </label>
-              <select
-                value={cssVars.font_family}
-                onChange={(e) => handleChange('font_family', e.target.value)}
-                className={`w-full p-2.5 rounded-lg border ${
-                  darkMode 
-                    ? 'bg-gray-700 border-gray-600 text-white' 
-                    : 'bg-white border-gray-300 text-gray-900'
-                } focus:ring-2 focus:ring-blue-500 transition-colors`}
-              >
-                {Object.entries(groupedFonts).map(([category, fonts]) => (
-                  <optgroup key={category} label={category}>
-                    {fonts.map(font => (
-                      <option 
-                        key={font.value} 
-                        value={font.value}
-                        style={{ fontFamily: font.value }}
-                      >
-                        {font.label}
-                      </option>
-                    ))}
-                  </optgroup>
-                ))}
-              </select>
-              <div className="mt-2 space-y-1">
-                <p 
-                  className={`${
-                    darkMode ? 'text-gray-400' : 'text-gray-600'
-                  } text-sm`}
-                  style={{ fontFamily: cssVars.font_family }}
+  return (
+    <div className="space-y-6">
+      {/* Font Family Select with Grouped Options */}
+      <div>
+        <label className={`block mb-2 font-medium ${
+          darkMode ? 'text-gray-200' : 'text-gray-700'
+        }`}>
+          Font Family
+        </label>
+        <select
+          value={cssVars.font_family}
+          onChange={(e) => handleChange('font_family', e.target.value)}
+          className={`w-full p-2.5 rounded-lg border ${
+            darkMode 
+              ? 'bg-gray-700 border-gray-600 text-white' 
+              : 'bg-white border-gray-300 text-gray-900'
+          } focus:ring-2 focus:ring-blue-500 transition-colors`}
+        >
+          {Object.entries(groupedFonts).map(([category, fonts]) => (
+            <optgroup key={category} label={category}>
+              {fonts.map(font => (
+                <option 
+                  key={font.value} 
+                  value={font.value}
+                  style={{ fontFamily: font.value }}
                 >
-                  Preview text in {cssVars.font_family}
-                </p>
-                <p 
-                  className={`${
-                    darkMode ? 'text-gray-400' : 'text-gray-600'
-                  } text-sm`}
-                  style={{ fontFamily: cssVars.font_family }}
-                >
-                  The quick brown fox jumps over the lazy dog 0123456789
-                </p>
-              </div>
-            </div>
-          );
-        }
+                  {font.label}
+                </option>
+              ))}
+            </optgroup>
+          ))}
+        </select>
+        <div className="mt-2 space-y-1">
+          <p 
+            className={`${
+              darkMode ? 'text-gray-400' : 'text-gray-600'
+            } text-sm`}
+            style={{ fontFamily: cssVars.font_family }}
+          >
+            Preview text in {cssVars.font_family}
+          </p>
+          <p 
+            className={`${
+              darkMode ? 'text-gray-400' : 'text-gray-600'
+            } text-sm`}
+            style={{ fontFamily: cssVars.font_family }}
+          >
+            The quick brown fox jumps over the lazy dog 0123456789
+          </p>
+        </div>
+      </div>
 
-        const { label, options } = GENERAL_SETTINGS[setting];
+      {/* Other Settings */}
+      {Object.entries(GENERAL_SETTINGS).map(([setting, { label, options }]) => {
+        if (setting === 'font_family') return null; // Skip font family as it's handled above
         return (
           <div key={setting}>
             <label className={`block mb-2 font-medium ${
@@ -322,14 +199,6 @@ export const GeneralSettings = ({ darkMode, cssVars, setCssVars }) => {
           </div>
         );
       })}
-    </div>
-  );
-
-  return (
-    <div className="space-y-8">
-      {Object.entries(settingGroups).map(([groupName, settings]) => 
-        renderSettingGroup(groupName, settings)
-      )}
     </div>
   );
 };

@@ -2,87 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Animation Base Class */
-.animated {
-  animation-fill-mode: both;
+/* Base styles */
+:root {
+  --font-inter: 'Inter', sans-serif;
 }
 
-/* Fade In Animation */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
+/* Dark mode styles */
+.dark {
+  color-scheme: dark;
+}
+
+/* Utility classes */
+@layer utilities {
+  .backdrop-blur {
+    backdrop-filter: blur(8px);
   }
-  to {
-    opacity: 1;
-  }
-}
-
-.fade-in {
-  animation-name: fadeIn;
-}
-
-/* Slide In Animation */
-@keyframes slideIn {
-  from {
-    transform: translateY(-20px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-.slide-in {
-  animation-name: slideIn;
-}
-
-/* Scale Animation */
-@keyframes scaleIn {
-  from {
-    transform: scale(0.95);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-.scale-in {
-  animation-name: scaleIn;
-}
-
-/* Hover Animation */
-.hover-lift {
-  transition: transform 0.2s ease-in-out;
-}
-
-.hover-lift:hover {
-  transform: translateY(-2px);
-}
-
-/* Custom Scrollbar Base Styles */
-* {
-  scrollbar-width: thin;
-  scrollbar-color: var(--scrollbar-thumb, #888) var(--scrollbar-track, #f1f1f1);
-}
-
-/* Custom Scrollbar for Webkit Browsers */
-::-webkit-scrollbar {
-  width: var(--scrollbar-width, 10px);
-}
-
-::-webkit-scrollbar-track {
-  background: var(--scrollbar-track, #f1f1f1);
-  border-radius: calc(var(--scrollbar-width, 10px) / 2);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--scrollbar-thumb, #888);
-  border-radius: calc(var(--scrollbar-width, 10px) / 2);
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--scrollbar-thumb-hover, #555);
 }
