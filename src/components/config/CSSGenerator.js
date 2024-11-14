@@ -1,4 +1,5 @@
-// CSSGenerator.js
+import { generateFontStyles } from './fonts';
+
 const generateLayoutStyles = (toggles) => {
   const styles = [];
 
@@ -97,11 +98,6 @@ const elements = {
 
 const generateVariables = (cssVars, toggles) => {
   const variables = [];
-
-  // Font variables  
-  if (toggles.enable_font) {
-    variables.push(`  --my-font: "${cssVars.font_family}";`);
-  }
 
   // Border variables for each element type
   ['tabs', 'widgets', 'cards', 'bookmarks'].forEach(element => {
@@ -331,6 +327,23 @@ export const generateCSS = (cssVars, toggles) => {
   GETHOMEPAGE CSS WIZARD
   Generated: ${new Date().toLocaleString()}
 ==================================*/`);
+
+  // Font Styles (including imports and definitions)
+  if (toggles.enable_font) {
+    const fontStyles = generateFontStyles(cssVars, toggles);
+    if (fontStyles) {
+      cssParts.push(fontStyles);
+    }
+    
+    // Add global font styles
+    cssParts.push(`
+/*==================================
+  GLOBAL FONT STYLES
+==================================*/
+* {
+  font-family: var(--my-font) !important;
+}`);
+  }
 
   // CSS Variables
   const hasVariables = Object.values(toggles).some(value => value);
