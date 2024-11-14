@@ -1,24 +1,19 @@
 # CSS Wizard for Gethomepage
 
-A powerful CSS customization tool for Gethomepage, featuring live preview, color presets, and an intuitive interface for creating beautiful, responsive designs.
+A powerful CSS customization tool for Gethomepage, featuring live preview and an intuitive interface for creating beautiful, responsive designs.
 
-![CSS-Wizard-11-14-2024_09_09_AM](https://github.com/user-attachments/assets/cd1bebd0-2002-4296-8def-0a5b09a1007a)
-
+![CSS-Wizard-11-14-2024_09_09_AM](https://github.com/user-attachments/assets/bd8487cc-5695-4ffc-b40f-8feccf613e26)
 
 ## ✨ Features
 
-- **Live Preview**: Instantly visualize your changes with an interactive demo
-- **Theme Management**:
-  - Built-in color picker with advanced controls
-  - Rich collection of pre-built themes
-  - Create, save, and manage custom themes
-  - Import/export theme configurations
+- **Live Preview**: Real-time visualization of changes
+- **Custom Presets**: Create, save, and manage custom themes
 - **Comprehensive Styling**:
-  - Font customization with extensive font library
+  - Font customization
   - Border controls (width, radius, colors)
   - Backdrop filters and effects
   - Hover and focus states
-- **Dark/Light Mode**: Seamless switching between themes
+- **Dark/Light Mode**: Seamless theme switching
 - **Responsive Design**: Mobile-optimized interface
 - **Feature Toggles**: Enable/disable specific styling features
 
@@ -36,9 +31,9 @@ Create or update your `docker-compose.yml`:
 
 ```yaml
 services:
-  homepage-css-editor-beta:
-    container_name: Homepage-CSS-Editor-Beta
-    image: ghcr.io/10mfox/gethomepage-custom-css:beta
+  homepage-css-editor:
+    container_name: Homepage-CSS-Editor
+    image: ghcr.io/10mfox/gethomepage-custom-css:latest
     ports:
       - "5556:5556"  # Can be changed to any available port
     environment:
@@ -69,7 +64,7 @@ services:
 ### Basic Workflow
 
 1. **Configure Features**:
-   - Use the Feature Toggles dropdown to enable/disable specific styling options
+   - Use Feature Toggles to enable/disable styling options
    - Toggle options like fonts, colors, borders, and effects
 
 2. **Customize Styles**:
@@ -78,8 +73,7 @@ services:
    - Configure backdrop filters
    - Choose colors using the color picker
 
-3. **Apply Themes**:
-   - Select from built-in presets
+3. **Save Custom Presets**:
    - Create and save custom themes
    - Import previously saved configurations
 
