@@ -175,10 +175,6 @@ If you find a bug, please create an issue with:
 - Screenshots (if applicable)
 - Browser and version information
 
-## 📦 Version History
-
-See [CHANGELOG.md](CHANGELOG.md) for a list of changes.
-
 ---
 
 Made with ❤️ for the Gethomepage community
