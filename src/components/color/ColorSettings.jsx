@@ -11,7 +11,7 @@ const baseColorGroups = {
   }
 };
 
-export const ColorSettings = ({ darkMode, cssVars, setCssVars, toggles }) => {
+export const ColorSettings = ({ darkMode, cssVars, setCssVars, toggles = {} }) => {
   const [expandedGroups, setExpandedGroups] = React.useState({
     'Basic Colors': true,
     'Animation Settings': true
@@ -61,6 +61,32 @@ export const ColorSettings = ({ darkMode, cssVars, setCssVars, toggles }) => {
       key === 'enable_rotating_focus'
     )
   );
+
+  // Check if any color settings are enabled
+  const hasEnabledColorSettings = React.useMemo(() => (
+    Object.entries(toggles).some(([key, value]) => 
+      value && (
+        key.startsWith('enable_borders_') || 
+        key.startsWith('enable_rotating_borders_') ||
+        key === 'enable_rotating_hover' || 
+        key === 'enable_rotating_focus' ||
+        key === 'enable_hover_effects' ||
+        key === 'enable_focus_effects' ||
+        key === 'enable_text_color' ||
+        key === 'enable_background'
+      )
+    )
+  ), [toggles]);
+
+  if (!hasEnabledColorSettings) {
+    return (
+      <div className="h-full flex items-center justify-center">
+        <p className={`text-center ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+          Enable features in the Feature Toggles menu to configure their settings
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-6">

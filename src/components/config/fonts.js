@@ -1,52 +1,36 @@
-// fonts.js
-
-// Font categories with their CDN Fonts imports
-const CDN_FONTS = {
+// Font categories and their CDNFonts availability
+const CDNFONTS = {
   'Modern Sans': {
     'Inter': 'inter',
     'Roboto': 'roboto',
     'Open Sans': 'open-sans',
-    'Noto Sans': 'noto-sans',
-    'Source Sans Pro': 'source-sans-pro',
     'Montserrat': 'montserrat',
     'Lato': 'lato',
-    'Poppins': 'poppins',
-    'Work Sans': 'work-sans',
-    'Ubuntu': 'ubuntu'
+    'Poppins': 'poppins'
   },
   'Modern Serif': {
     'Merriweather': 'merriweather',
     'Playfair Display': 'playfair-display',
     'Lora': 'lora',
-    'Crimson Text': 'crimson-text',
-    'Libre Baskerville': 'libre-baskerville',
-    'Source Serif Pro': 'source-serif-pro',
-    'PT Serif': 'pt-serif',
-    'Cormorant': 'cormorant'
+    'Crimson Text': 'crimson-text'
   },
   'Coding': {
+    'Cascadia Code': 'cascadia-code',
     'Fira Code': 'fira-code',
     'JetBrains Mono': 'jetbrains-mono',
     'Source Code Pro': 'source-code-pro',
-    'IBM Plex Mono': 'ibm-plex-mono',
-    'Inconsolata': 'inconsolata',
-    'Cascadia Code': 'cascadia-code'
+    'IBM Plex Mono': 'ibm-plex-mono'
   },
   'Display': {
     'Permanent Marker': 'permanent-marker',
     'Righteous': 'righteous',
-    'Bangers': 'bangers',
-    'Philosopher': 'philosopher'
+    'Bangers': 'bangers'
   },
   'Script': {
     'Dancing Script': 'dancing-script',
     'Pacifico': 'pacifico',
     'Great Vibes': 'great-vibes',
-    'Sacramento': 'sacramento',
-    'Caveat': 'caveat',
-    'Indie Flower': 'indie-flower',
-    'Satisfy': 'satisfy',
-    'Kalam': 'kalam'
+    'Caveat': 'caveat'
   }
 };
 
@@ -82,7 +66,7 @@ const isSystemFont = (fontFamily) => {
 };
 
 const getFontCategory = (fontFamily) => {
-  for (const [category, fonts] of Object.entries(CDN_FONTS)) {
+  for (const [category, fonts] of Object.entries(CDNFONTS)) {
     if (fonts[fontFamily]) return category;
   }
   return null;
@@ -105,11 +89,10 @@ const getFontFallback = (fontFamily) => {
   return SYSTEM_FONTS.sans;
 };
 
-const generateCdnFontImport = (fontFamily) => {
-  for (const category of Object.values(CDN_FONTS)) {
+const generateCDNFontImport = (fontFamily) => {
+  for (const category of Object.values(CDNFONTS)) {
     if (category[fontFamily]) {
-      const fontSlug = category[fontFamily];
-      return `@import url('https://fonts.cdnfonts.com/css/${fontSlug}');`;
+      return `@import url('https://fonts.cdnfonts.com/css/${category[fontFamily]}');`;
     }
   }
   return null;
@@ -129,7 +112,7 @@ export const generateFontStyles = (cssVars, toggles) => {
 
   // Only add import if it's not a system font
   if (!isSystemFont(fontFamily)) {
-    const cdnFontImport = generateCdnFontImport(fontFamily);
+    const cdnFontImport = generateCDNFontImport(fontFamily);
     if (cdnFontImport) {
       styles.push(`/*==================================
   FONT IMPORTS
@@ -151,13 +134,13 @@ ${cdnFontImport}`);
   return styles.join('\n');
 };
 
-export const isCdnFont = (fontFamily) => {
-  return Object.values(CDN_FONTS).some(category => 
+export const isCDNFont = (fontFamily) => {
+  return Object.values(CDNFONTS).some(category => 
     Object.hasOwnProperty.call(category, fontFamily)
   );
 };
 
-export const FONT_OPTIONS = Object.entries(CDN_FONTS).reduce((acc, [category, fonts]) => {
+export const FONT_OPTIONS = Object.entries(CDNFONTS).reduce((acc, [category, fonts]) => {
   Object.keys(fonts).forEach(font => {
     acc.push({
       value: font,

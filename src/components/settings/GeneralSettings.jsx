@@ -1,86 +1,54 @@
 import React from 'react';
 
-// Configuration options with expanded font list
+// Configuration options with CDNFonts list
 const GENERAL_SETTINGS = {
   font_family: {
     label: 'Font Family',
+    toggle: 'enable_font',
     options: [
       // Modern Sans-Serif Fonts
       { value: "Inter", label: "Inter - Modern & Clean", category: "Modern Sans" },
-      { value: "Roboto", label: "Roboto - Google's Font", category: "Modern Sans" },
+      { value: "Roboto", label: "Roboto - Clean & Crisp", category: "Modern Sans" },
       { value: "Open Sans", label: "Open Sans - Friendly & Open", category: "Modern Sans" },
-      { value: "Noto Sans", label: "Noto Sans - Universal", category: "Modern Sans" },
-      { value: "Source Sans Pro", label: "Source Sans Pro - Adobe's Sans", category: "Modern Sans" },
       { value: "Montserrat", label: "Montserrat - Modern Geometric", category: "Modern Sans" },
       { value: "Lato", label: "Lato - Balanced & Modern", category: "Modern Sans" },
       { value: "Poppins", label: "Poppins - Geometric Sans", category: "Modern Sans" },
-      { value: "Work Sans", label: "Work Sans - Minimal Modern", category: "Modern Sans" },
-      { value: "Ubuntu", label: "Ubuntu - Friendly Tech", category: "Modern Sans" },
-      
-      // Classic Sans-Serif Fonts
-      { value: "Arial", label: "Arial - Classic Sans", category: "Classic Sans" },
-      { value: "Helvetica", label: "Helvetica - Swiss Classic", category: "Classic Sans" },
-      { value: "Verdana", label: "Verdana - Screen Friendly", category: "Classic Sans" },
-      { value: "Tahoma", label: "Tahoma - Microsoft Classic", category: "Classic Sans" },
-      { value: "Trebuchet MS", label: "Trebuchet MS - Modern Classic", category: "Classic Sans" },
-      { value: "Segoe UI", label: "Segoe UI - Windows UI", category: "Classic Sans" },
-      { value: "system-ui", label: "System UI - Native Look", category: "Classic Sans" },
-      { value: "-apple-system", label: "Apple System - macOS Native", category: "Classic Sans" },
       
       // Modern Serif Fonts
       { value: "Merriweather", label: "Merriweather - Modern Serif", category: "Modern Serif" },
       { value: "Playfair Display", label: "Playfair Display - Elegant", category: "Modern Serif" },
       { value: "Lora", label: "Lora - Contemporary Serif", category: "Modern Serif" },
       { value: "Crimson Text", label: "Crimson Text - Old Style", category: "Modern Serif" },
-      { value: "Libre Baskerville", label: "Libre Baskerville - Modern Classic", category: "Modern Serif" },
-      { value: "Source Serif Pro", label: "Source Serif Pro - Adobe's Serif", category: "Modern Serif" },
-      { value: "PT Serif", label: "PT Serif - ParaType Serif", category: "Modern Serif" },
-      { value: "Cormorant", label: "Cormorant - Display Serif", category: "Modern Serif" },
-      
-      // Classic Serif Fonts
-      { value: "Times New Roman", label: "Times New Roman - Classic", category: "Classic Serif" },
-      { value: "Georgia", label: "Georgia - Screen Serif", category: "Classic Serif" },
-      { value: "Garamond", label: "Garamond - Renaissance", category: "Classic Serif" },
-      { value: "Palatino", label: "Palatino - Elegant Classic", category: "Classic Serif" },
-      { value: "Baskerville", label: "Baskerville - Traditional", category: "Classic Serif" },
-      { value: "Cambria", label: "Cambria - Modern Classic", category: "Classic Serif" },
-      { value: "Book Antiqua", label: "Book Antiqua - Ancient Style", category: "Classic Serif" },
       
       // Coding & Technical Fonts
+      { value: "Cascadia Code", label: "Cascadia Code - Microsoft", category: "Coding" },
       { value: "Fira Code", label: "Fira Code - With Ligatures", category: "Coding" },
       { value: "JetBrains Mono", label: "JetBrains Mono - IDE Font", category: "Coding" },
       { value: "Source Code Pro", label: "Source Code Pro - Adobe Code", category: "Coding" },
       { value: "IBM Plex Mono", label: "IBM Plex Mono - IBM's Code", category: "Coding" },
-      { value: "Cascadia Code", label: "Cascadia Code - Microsoft Code", category: "Coding" },
-      { value: "Inconsolata", label: "Inconsolata - Monospace", category: "Coding" },
-      { value: "Courier New", label: "Courier New - Classic Mono", category: "Coding" },
-      { value: "Consolas", label: "Consolas - Windows Mono", category: "Coding" },
-      { value: "Monaco", label: "Monaco - macOS Mono", category: "Coding" },
-      { value: "Menlo", label: "Menlo - Apple Mono", category: "Coding" },
       
       // Display & Decorative Fonts
-      { value: "Impact", label: "Impact - Bold Display", category: "Display" },
       { value: "Permanent Marker", label: "Permanent Marker - Marker Style", category: "Display" },
-      { value: "Comic Sans MS", label: "Comic Sans MS - Casual", category: "Display" },
-      { value: "Brush Script MT", label: "Brush Script MT - Script", category: "Display" },
-      { value: "Copperplate", label: "Copperplate - Engraved", category: "Display" },
-      { value: "Philosopher", label: "Philosopher - Art Deco", category: "Display" },
       { value: "Righteous", label: "Righteous - Modern Display", category: "Display" },
       { value: "Bangers", label: "Bangers - Comic Style", category: "Display" },
       
-      // Handwriting & Script Fonts
+      // Script Fonts
       { value: "Dancing Script", label: "Dancing Script - Elegant Script", category: "Script" },
       { value: "Pacifico", label: "Pacifico - Fun Script", category: "Script" },
       { value: "Great Vibes", label: "Great Vibes - Calligraphy", category: "Script" },
-      { value: "Sacramento", label: "Sacramento - Light Script", category: "Script" },
       { value: "Caveat", label: "Caveat - Handwritten", category: "Script" },
-      { value: "Indie Flower", label: "Indie Flower - Casual Script", category: "Script" },
-      { value: "Satisfy", label: "Satisfy - Brush Script", category: "Script" },
-      { value: "Kalam", label: "Kalam - Handwriting", category: "Script" }
+      
+      // System Fonts
+      { value: "Arial", label: "Arial - System Sans", category: "System Fonts" },
+      { value: "Helvetica", label: "Helvetica - System Sans", category: "System Fonts" },
+      { value: "Times New Roman", label: "Times New Roman - System Serif", category: "System Fonts" },
+      { value: "Georgia", label: "Georgia - System Serif", category: "System Fonts" },
+      { value: "Courier New", label: "Courier New - System Mono", category: "System Fonts" }
     ]
   },
   border_width: {
     label: 'Border Width',
+    toggle: 'enable_borders_tabs',
     options: [
       "1px", "2px", "3px", "4px", "5px",
       "6px", "8px", "10px", "12px", "16px"
@@ -88,6 +56,7 @@ const GENERAL_SETTINGS = {
   },
   border_radius: {
     label: 'Border Radius',
+    toggle: 'enable_borders_tabs',
     options: [
       ".125rem", ".25rem", ".375rem",
       ".5rem", ".75rem", "1rem"
@@ -95,6 +64,7 @@ const GENERAL_SETTINGS = {
   },
   backdrop_filter: {
     label: 'Backdrop Filter',
+    toggle: 'enable_backdrop_filter',
     options: [
       "blur(8px)", "blur(4px)",
       "blur(12px)", "blur(16px)"
@@ -102,7 +72,7 @@ const GENERAL_SETTINGS = {
   }
 };
 
-export const GeneralSettings = ({ darkMode, cssVars, setCssVars }) => {
+export const GeneralSettings = ({ darkMode, cssVars, setCssVars, toggles = {} }) => {
   const handleChange = (setting, value) => {
     setCssVars(prev => ({
       ...prev,
@@ -110,70 +80,117 @@ export const GeneralSettings = ({ darkMode, cssVars, setCssVars }) => {
     }));
   };
 
-  // Group fonts by category
-  const groupedFonts = GENERAL_SETTINGS.font_family.options.reduce((acc, font) => {
-    if (!acc[font.category]) {
-      acc[font.category] = [];
+  // Load selected font CSS
+  React.useEffect(() => {
+    const loadFont = async () => {
+      const selectedFont = GENERAL_SETTINGS.font_family.options.find(
+        font => font.value === cssVars.font_family
+      );
+      
+      if (selectedFont && selectedFont.category !== 'System Fonts') {
+        // Convert font name to CDNFonts format
+        const fontUrl = `https://fonts.cdnfonts.com/css/${selectedFont.value.toLowerCase().replace(/\s+/g, '-')}`;
+        
+        // Check if the font link is already present
+        const existingLink = document.head.querySelector(`link[href="${fontUrl}"]`);
+        if (!existingLink) {
+          const link = document.createElement('link');
+          link.href = fontUrl;
+          link.rel = 'stylesheet';
+          document.head.appendChild(link);
+        }
+      }
+    };
+
+    if (toggles.enable_font) {
+      loadFont();
     }
-    acc[font.category].push(font);
-    return acc;
-  }, {});
+  }, [cssVars.font_family, toggles.enable_font]);
+
+  // Group fonts by category
+  const groupedFonts = React.useMemo(() => {
+    return GENERAL_SETTINGS.font_family.options.reduce((acc, font) => {
+      if (!acc[font.category]) {
+        acc[font.category] = [];
+      }
+      acc[font.category].push(font);
+      return acc;
+    }, {});
+  }, []);
+
+  // Check if any settings are enabled
+  const hasEnabledSettings = Object.values(GENERAL_SETTINGS).some(({ toggle }) => toggles[toggle]);
+
+  if (!hasEnabledSettings) {
+    return (
+      <div className="h-full flex items-center justify-center">
+        <p className={`text-center ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+          Enable features in the Feature Toggles menu to configure their settings
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-6">
-      {/* Font Family Select with Grouped Options */}
-      <div>
-        <label className={`block mb-2 font-medium ${
-          darkMode ? 'text-gray-200' : 'text-gray-700'
-        }`}>
-          Font Family
-        </label>
-        <select
-          value={cssVars.font_family}
-          onChange={(e) => handleChange('font_family', e.target.value)}
-          className={`w-full p-2.5 rounded-lg border ${
-            darkMode 
-              ? 'bg-gray-700 border-gray-600 text-white' 
-              : 'bg-white border-gray-300 text-gray-900'
-          } focus:ring-2 focus:ring-blue-500 transition-colors`}
-        >
-          {Object.entries(groupedFonts).map(([category, fonts]) => (
-            <optgroup key={category} label={category}>
-              {fonts.map(font => (
-                <option 
-                  key={font.value} 
-                  value={font.value}
-                  style={{ fontFamily: font.value }}
-                >
-                  {font.label}
-                </option>
-              ))}
-            </optgroup>
-          ))}
-        </select>
-        <div className="mt-2 space-y-1">
-          <p 
-            className={`${
-              darkMode ? 'text-gray-400' : 'text-gray-600'
-            } text-sm`}
-            style={{ fontFamily: cssVars.font_family }}
-          >
-            Preview text in {cssVars.font_family}
-          </p>
-          <p 
-            className={`${
-              darkMode ? 'text-gray-400' : 'text-gray-600'
-            } text-sm`}
-            style={{ fontFamily: cssVars.font_family }}
-          >
-            The quick brown fox jumps over the lazy dog 0123456789
-          </p>
-        </div>
-      </div>
+      {Object.entries(GENERAL_SETTINGS).map(([setting, { label, toggle, options }]) => {
+        // Skip if toggles is undefined or the specific toggle is not enabled
+        if (!toggles || !toggles[toggle]) return null;
 
-      {/* Other Settings */}
-      {Object.entries(GENERAL_SETTINGS).map(([setting, { label, options }]) => {
-        if (setting === 'font_family') return null; // Skip font family as it's handled above
+        if (setting === 'font_family') {
+          return (
+            <div key={setting}>
+              <label className={`block mb-2 font-medium ${
+                darkMode ? 'text-gray-200' : 'text-gray-700'
+              }`}>
+                {label}
+              </label>
+              <select
+                value={cssVars[setting]}
+                onChange={(e) => handleChange(setting, e.target.value)}
+                className={`w-full p-2.5 rounded-lg border ${
+                  darkMode 
+                    ? 'bg-gray-700 border-gray-600 text-white' 
+                    : 'bg-white border-gray-300 text-gray-900'
+                } focus:ring-2 focus:ring-blue-500 transition-colors`}
+              >
+                {Object.entries(groupedFonts).map(([category, fonts]) => (
+                  <optgroup key={category} label={category}>
+                    {fonts.map(font => (
+                      <option 
+                        key={font.value} 
+                        value={font.value}
+                        style={{ fontFamily: font.value }}
+                      >
+                        {font.label}
+                      </option>
+                    ))}
+                  </optgroup>
+                ))}
+              </select>
+              {/* Font preview */}
+              <div className="mt-2 space-y-1">
+                <p 
+                  className={`${
+                    darkMode ? 'text-gray-400' : 'text-gray-600'
+                  } text-sm`}
+                  style={{ fontFamily: cssVars.font_family }}
+                >
+                  Preview text in {cssVars.font_family}
+                </p>
+                <p 
+                  className={`${
+                    darkMode ? 'text-gray-400' : 'text-gray-600'
+                  } text-sm`}
+                  style={{ fontFamily: cssVars.font_family }}
+                >
+                  The quick brown fox jumps over the lazy dog 0123456789
+                </p>
+              </div>
+            </div>
+          );
+        }
+
         return (
           <div key={setting}>
             <label className={`block mb-2 font-medium ${

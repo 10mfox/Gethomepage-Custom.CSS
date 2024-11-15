@@ -15,7 +15,8 @@ export const MainContent = ({ darkMode, cssVars, setCssVars, toggles }) => (
         <StyleSettings 
           darkMode={darkMode} 
           cssVars={cssVars} 
-          setCssVars={setCssVars} 
+          setCssVars={setCssVars}
+          toggles={toggles} 
         />
       </div>
 
