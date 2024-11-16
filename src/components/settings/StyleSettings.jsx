@@ -2,10 +2,10 @@ import React from 'react';
 import { Settings2 } from 'lucide-react';
 import { GeneralSettings } from './GeneralSettings';
 
-export const StyleSettings = ({ darkMode, cssVars, setCssVars }) => (
+export const StyleSettings = ({ darkMode, cssVars, setCssVars, toggles }) => (
   <div className={`${
     darkMode ? 'bg-gray-800' : 'bg-white'
-  } rounded-xl shadow-sm overflow-hidden h-full`}>
+  } rounded-xl shadow-sm overflow-hidden flex flex-col`}>
     <div className={`px-4 py-3 border-b ${
       darkMode ? 'bg-gray-800 border-gray-700' : 'bg-gray-50 border-gray-100'
     }`}>
@@ -17,11 +17,12 @@ export const StyleSettings = ({ darkMode, cssVars, setCssVars }) => (
       </div>
     </div>
     
-    <div className="p-4">
+    <div className="flex-1 p-4">
       <GeneralSettings
         darkMode={darkMode}
         cssVars={cssVars}
         setCssVars={setCssVars}
+        toggles={toggles}
       />
     </div>
   </div>

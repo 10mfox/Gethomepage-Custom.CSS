@@ -6,6 +6,7 @@ import { usePresetManager } from './components/preset/PresetManager';
 import { SavePresetDialog } from './components/color/SavePresetDialog';
 import { ConfigProvider, useConfig } from './components/config/ConfigProvider';
 import { PresetTogglesBar } from './components/PresetTogglesBar';
+import { BUILT_IN_PRESETS } from './components/color/presets';
 
 const AppContent = () => {
   const { 

@@ -15,7 +15,8 @@ export const MainContent = ({ darkMode, cssVars, setCssVars, toggles }) => (
         <StyleSettings 
           darkMode={darkMode} 
           cssVars={cssVars} 
-          setCssVars={setCssVars} 
+          setCssVars={setCssVars}
+          toggles={toggles} 
         />
       </div>
 
@@ -40,6 +41,7 @@ export const MainContent = ({ darkMode, cssVars, setCssVars, toggles }) => (
               darkMode={darkMode}
               cssVars={cssVars}
               setCssVars={setCssVars}
+              toggles={toggles}
             />
           </div>
         </div>
@@ -78,6 +80,9 @@ export const MainContent = ({ darkMode, cssVars, setCssVars, toggles }) => (
     </div>
 
     {/* Generated CSS */}
-    <GeneratedCSS darkMode={darkMode} css={generateCSS(cssVars, toggles)} />
+    <GeneratedCSS 
+      darkMode={darkMode} 
+      css={generateCSS(cssVars, toggles)} 
+    />
   </div>
 );
