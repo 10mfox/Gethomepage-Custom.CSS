@@ -68,6 +68,9 @@ const defaultToggles = {
   // Layout
   enable_centered_card_titles: false,
   remove_refresh_button_and_version: false,
+  hide_bookmark_descriptions: false,
+  hide_bookmark_names: false,
+  custom_api_list_clean_format: false,  
 };
 
 const loadStoredConfig = () => {

@@ -12,7 +12,8 @@ const NestedToggle = ({ darkMode, label, toggles, setToggles, toggleKeys }) => {
     bookmarks: ['enable_borders_bookmarks', 'enable_rotating_borders_bookmarks'],
     cards: ['enable_borders_cards', 'enable_rotating_borders_cards'],
     hover: ['enable_hover_effects', 'enable_rotating_hover'],
-    focus: ['enable_focus_effects', 'enable_rotating_focus']
+    focus: ['enable_focus_effects', 'enable_rotating_focus'],
+    bookmarkDisplay: ['hide_bookmark_names', 'hide_bookmark_descriptions']	
   };
 
   // Get the group name for a given toggle key
@@ -210,43 +211,31 @@ export const PresetTogglesBar = ({
   const toggleGroups = {
     staticBorders: {
       label: 'Static Border Elements',
-      keys: [
-        'enable_borders_widgets',
-        'enable_borders_tabs',
-        'enable_borders_cards',
-        'enable_borders_bookmarks'
-      ]
+      keys: ['enable_borders_widgets', 'enable_borders_tabs', 'enable_borders_cards', 'enable_borders_bookmarks']
     },
     animatedBorders: {
       label: 'Animated Border Elements',
-      keys: [
-        'enable_rotating_borders_widgets',
-        'enable_rotating_borders_tabs',
-        'enable_rotating_borders_cards',
-        'enable_rotating_borders_bookmarks'
-      ]
+      keys: ['enable_rotating_borders_widgets', 'enable_rotating_borders_tabs', 'enable_rotating_borders_cards', 'enable_rotating_borders_bookmarks']
     },
     hoverEffects: {
       label: 'Hover Effects',
-      keys: [
-        'enable_hover_effects',
-        'enable_rotating_hover'
-      ]
+      keys: ['enable_hover_effects', 'enable_rotating_hover']
     },
     focusEffects: {
       label: 'Focus Effects',
-      keys: [
-        'enable_focus_effects',
-        'enable_rotating_focus'
-      ]
+      keys: ['enable_focus_effects', 'enable_rotating_focus']
     },
     appearance: {
       label: 'Appearance',
       keys: ['enable_font', 'enable_text_color', 'enable_background', 'enable_backdrop_filter']
     },
+    bookmarkDisplay: {
+      label: 'Bookmark Display',
+      keys: ['hide_bookmark_names', 'hide_bookmark_descriptions']
+    },
     layout: {
       label: 'Layout',
-      keys: ['enable_centered_card_titles', 'remove_refresh_button_and_version']
+      keys: ['enable_centered_card_titles', 'remove_refresh_button_and_version', 'custom_api_list_clean_format']
     }
   };
 

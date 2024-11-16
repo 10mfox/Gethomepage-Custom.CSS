@@ -22,6 +22,58 @@ const generateLayoutStyles = (toggles) => {
 }`);
   }
 
+  // Hide bookmark descriptions toggle
+  if (toggles.hide_bookmark_descriptions) {
+    styles.push(`
+.bookmark-description {
+  display: none !important;
+}`);
+  }
+
+  // Hide bookmark names toggle
+  if (toggles.hide_bookmark_names) {
+    styles.push(`
+.bookmark-name {
+  display: none !important;
+}`);
+  }
+
+  // Custom List Format
+  if (toggles.custom_api_list_clean_format) {
+    styles.push(`
+/*==================================
+  LIST STYLES
+==================================*/
+/* Recently Added Section */
+
+/* Be Sure To Add (id: list) to custom api in services.yaml like this
+- Recently Added:
+     - Movies:
+        icon: mdi-filmstrip
+        id: list
+        widget:
+          type: customapi */
+
+#list > div > div.relative.flex.flex-row.w-full.service-container > div > div {
+  display: block;
+  text-align: right;
+}
+#list > div > div.relative.flex.flex-row.w-full.service-container > div > div > div.flex.flex-row.text-right > div:nth-child(1),
+#list > div > div.relative.flex.flex-row.w-full.service-container > div > div > div.flex.flex-row.text-right > div:nth-child(2) {
+  white-space: wrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#list > div > div.relative.flex.flex-row.w-full.service-container > div > div > div.flex.flex-row.text-right > div:nth-child(1) {
+  text-align: left;
+  margin-left: .5rem;
+}
+#list > div > div.relative.flex.flex-row.w-full.service-container > div > div > div.flex.flex-row.text-right > div:nth-child(2) {
+  text-align: right;
+  margin-left: auto;
+}`);
+  }
+
   return styles;
 };
 
@@ -326,6 +378,12 @@ export const generateCSS = (cssVars, toggles) => {
   cssParts.push(`/*==================================
   GETHOMEPAGE CSS WIZARD
   Generated: ${new Date().toLocaleString()}
+==================================*/
+
+/*==================================
+  GITHUB REPOSITORY
+  https://github.com/10mfox/Gethomepage-Custom-Css
+  If you find this tool helpful, please consider starring the repo!
 ==================================*/`);
 
   // Font Styles (including imports and definitions)
@@ -334,27 +392,17 @@ export const generateCSS = (cssVars, toggles) => {
     if (fontStyles) {
       cssParts.push(fontStyles);
     }
-    
-    // Add global font styles
-    cssParts.push(`
-/*==================================
-  GLOBAL FONT STYLES
-==================================*/
-* {
-  font-family: var(--my-font) !important;
-}`);
   }
 
   // CSS Variables
-  const hasVariables = Object.values(toggles).some(value => value);
-  if (hasVariables) {
+  const variables = generateVariables(cssVars, toggles);
+  if (variables.length > 0) {
     cssParts.push(`
 /*==================================
   CSS VARIABLES
 ==================================*/
-
 :root {
-${generateVariables(cssVars, toggles).join('\n')}
+${variables.join('\n')}
 }`);
   }
 
