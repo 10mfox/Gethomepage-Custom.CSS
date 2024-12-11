@@ -45,6 +45,7 @@ Copy the generated token immediately (you won't be able to see it again)
 Log in to Docker using your GitHub credentials:
 
 ```docker login ghcr.io -u YOUR_GITHUB_USERNAME```
+
 When prompted for password, enter your Personal Access Token (not your GitHub password)
 
 ### Installation Options
